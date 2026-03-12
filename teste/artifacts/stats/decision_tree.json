@@ -1,0 +1,395 @@
+{
+  "key": "decision_tree",
+  "name": "Decision Tree",
+  "task": "regression",
+  "source": "teste/90-accuracy-using-decision-tree-regressor.ipynb",
+  "artifact": "teste/artifacts/models/decision_tree.joblib",
+  "split": {
+    "test_size": 0.2,
+    "random_state": 42,
+    "train_rows": 160,
+    "test_rows": 40,
+    "shared_indices": true
+  },
+  "metrics": {
+    "selected": {
+      "train": {
+        "mae": 10.701,
+        "mse": 161.68,
+        "rmse": 12.7153,
+        "r2": 0.2328,
+        "explained_variance": 0.2328,
+        "median_absolute_error": 9.8864,
+        "max_error": 33.7667
+      },
+      "test": {
+        "mae": 11.881,
+        "mse": 198.8076,
+        "rmse": 14.0999,
+        "r2": -0.2627,
+        "explained_variance": -0.171,
+        "median_absolute_error": 10.0926,
+        "max_error": 27.7667
+      }
+    },
+    "baseline": {
+      "train": {
+        "mae": 10.264,
+        "mse": 153.719,
+        "rmse": 12.3983,
+        "r2": 0.2706,
+        "explained_variance": 0.2706,
+        "median_absolute_error": 9.4914,
+        "max_error": 29.1176
+      },
+      "test": {
+        "mae": 12.7969,
+        "mse": 226.335,
+        "rmse": 15.0444,
+        "r2": -0.4375,
+        "explained_variance": -0.3779,
+        "median_absolute_error": 11.863,
+        "max_error": 32.5333
+      }
+    },
+    "best_params": {
+      "max_depth": 3,
+      "min_samples_leaf": 4,
+      "min_samples_split": 10
+    }
+  },
+  "plots": {
+    "test_actual_vs_predicted": {
+      "points": [
+        {
+          "actual": 73.0,
+          "predicted": 66.0
+        },
+        {
+          "actual": 81.0,
+          "predicted": 81.2273
+        },
+        {
+          "actual": 52.0,
+          "predicted": 63.2333
+        },
+        {
+          "actual": 77.0,
+          "predicted": 81.2273
+        },
+        {
+          "actual": 89.0,
+          "predicted": 74.4186
+        },
+        {
+          "actual": 69.0,
+          "predicted": 74.4186
+        },
+        {
+          "actual": 66.0,
+          "predicted": 74.4186
+        },
+        {
+          "actual": 91.0,
+          "predicted": 63.2333
+        },
+        {
+          "actual": 58.0,
+          "predicted": 81.2273
+        },
+        {
+          "actual": 86.0,
+          "predicted": 81.2273
+        },
+        {
+          "actual": 77.0,
+          "predicted": 81.2273
+        },
+        {
+          "actual": 99.0,
+          "predicted": 74.4186
+        },
+        {
+          "actual": 99.0,
+          "predicted": 81.2273
+        },
+        {
+          "actual": 55.0,
+          "predicted": 63.2333
+        },
+        {
+          "actual": 89.0,
+          "predicted": 63.2333
+        },
+        {
+          "actual": 61.0,
+          "predicted": 81.2273
+        },
+        {
+          "actual": 85.0,
+          "predicted": 63.2333
+        },
+        {
+          "actual": 91.0,
+          "predicted": 63.2333
+        },
+        {
+          "actual": 87.0,
+          "predicted": 81.2
+        },
+        {
+          "actual": 70.0,
+          "predicted": 66.0
+        },
+        {
+          "actual": 75.0,
+          "predicted": 79.8125
+        },
+        {
+          "actual": 73.0,
+          "predicted": 65.4
+        },
+        {
+          "actual": 65.0,
+          "predicted": 74.4186
+        },
+        {
+          "actual": 90.0,
+          "predicted": 66.0
+        },
+        {
+          "actual": 79.0,
+          "predicted": 81.2273
+        },
+        {
+          "actual": 62.0,
+          "predicted": 74.4186
+        },
+        {
+          "actual": 91.0,
+          "predicted": 74.4186
+        },
+        {
+          "actual": 95.0,
+          "predicted": 81.2273
+        },
+        {
+          "actual": 68.0,
+          "predicted": 81.2273
+        },
+        {
+          "actual": 76.0,
+          "predicted": 81.2273
+        },
+        {
+          "actual": 80.0,
+          "predicted": 63.2333
+        },
+        {
+          "actual": 73.0,
+          "predicted": 81.2
+        },
+        {
+          "actual": 50.0,
+          "predicted": 63.2333
+        },
+        {
+          "actual": 79.0,
+          "predicted": 81.2
+        },
+        {
+          "actual": 74.0,
+          "predicted": 63.2333
+        },
+        {
+          "actual": 79.0,
+          "predicted": 63.2333
+        },
+        {
+          "actual": 77.0,
+          "predicted": 66.0
+        },
+        {
+          "actual": 58.0,
+          "predicted": 63.2333
+        },
+        {
+          "actual": 88.0,
+          "predicted": 81.2273
+        },
+        {
+          "actual": 75.0,
+          "predicted": 66.0
+        }
+      ],
+      "min": 50.0,
+      "max": 99.0
+    },
+    "baseline_test_actual_vs_predicted": {
+      "points": [
+        {
+          "actual": 73.0,
+          "predicted": 69.8824
+        },
+        {
+          "actual": 81.0,
+          "predicted": 88.4667
+        },
+        {
+          "actual": 52.0,
+          "predicted": 69.5
+        },
+        {
+          "actual": 77.0,
+          "predicted": 88.4667
+        },
+        {
+          "actual": 89.0,
+          "predicted": 78.2593
+        },
+        {
+          "actual": 69.0,
+          "predicted": 78.2593
+        },
+        {
+          "actual": 66.0,
+          "predicted": 78.2593
+        },
+        {
+          "actual": 91.0,
+          "predicted": 58.4667
+        },
+        {
+          "actual": 58.0,
+          "predicted": 77.4828
+        },
+        {
+          "actual": 86.0,
+          "predicted": 77.4828
+        },
+        {
+          "actual": 77.0,
+          "predicted": 77.4828
+        },
+        {
+          "actual": 99.0,
+          "predicted": 78.2593
+        },
+        {
+          "actual": 99.0,
+          "predicted": 88.4667
+        },
+        {
+          "actual": 55.0,
+          "predicted": 73.1
+        },
+        {
+          "actual": 89.0,
+          "predicted": 69.5
+        },
+        {
+          "actual": 61.0,
+          "predicted": 77.4828
+        },
+        {
+          "actual": 85.0,
+          "predicted": 58.4667
+        },
+        {
+          "actual": 91.0,
+          "predicted": 69.5
+        },
+        {
+          "actual": 87.0,
+          "predicted": 69.5
+        },
+        {
+          "actual": 70.0,
+          "predicted": 69.8824
+        },
+        {
+          "actual": 75.0,
+          "predicted": 72.6364
+        },
+        {
+          "actual": 73.0,
+          "predicted": 80.5
+        },
+        {
+          "actual": 65.0,
+          "predicted": 67.9375
+        },
+        {
+          "actual": 90.0,
+          "predicted": 69.8824
+        },
+        {
+          "actual": 79.0,
+          "predicted": 88.4667
+        },
+        {
+          "actual": 62.0,
+          "predicted": 78.2593
+        },
+        {
+          "actual": 91.0,
+          "predicted": 67.9375
+        },
+        {
+          "actual": 95.0,
+          "predicted": 77.4828
+        },
+        {
+          "actual": 68.0,
+          "predicted": 88.4667
+        },
+        {
+          "actual": 76.0,
+          "predicted": 77.4828
+        },
+        {
+          "actual": 80.0,
+          "predicted": 58.4667
+        },
+        {
+          "actual": 73.0,
+          "predicted": 69.5
+        },
+        {
+          "actual": 50.0,
+          "predicted": 58.4667
+        },
+        {
+          "actual": 79.0,
+          "predicted": 69.5
+        },
+        {
+          "actual": 74.0,
+          "predicted": 58.4667
+        },
+        {
+          "actual": 79.0,
+          "predicted": 58.4667
+        },
+        {
+          "actual": 77.0,
+          "predicted": 69.8824
+        },
+        {
+          "actual": 58.0,
+          "predicted": 73.1
+        },
+        {
+          "actual": 88.0,
+          "predicted": 88.4667
+        },
+        {
+          "actual": 75.0,
+          "predicted": 69.8824
+        }
+      ],
+      "min": 50.0,
+      "max": 99.0
+    }
+  }
+}

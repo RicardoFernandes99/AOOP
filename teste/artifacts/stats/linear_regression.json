@@ -1,0 +1,204 @@
+{
+  "key": "linear_regression",
+  "name": "Linear Regression",
+  "task": "regression",
+  "source": "teste/multiple-linear-regression-with-onehotencoding.ipynb",
+  "artifact": "teste/artifacts/models/linear_regression.joblib",
+  "split": {
+    "test_size": 0.2,
+    "random_state": 42,
+    "train_rows": 160,
+    "test_rows": 40,
+    "shared_indices": true
+  },
+  "metrics": {
+    "selected": {
+      "train": {
+        "mae": 10.0646,
+        "mse": 144.2181,
+        "rmse": 12.0091,
+        "r2": 0.3157,
+        "explained_variance": 0.3157,
+        "median_absolute_error": 9.3212,
+        "max_error": 30.4122
+      },
+      "test": {
+        "mae": 11.3641,
+        "mse": 226.3717,
+        "rmse": 15.0457,
+        "r2": -0.4399,
+        "explained_variance": -0.3971,
+        "median_absolute_error": 8.6756,
+        "max_error": 38.4682
+      }
+    }
+  },
+  "plots": {
+    "test_actual_vs_predicted": {
+      "points": [
+        {
+          "actual": 73.33,
+          "predicted": 67.2074
+        },
+        {
+          "actual": 81.13,
+          "predicted": 67.8612
+        },
+        {
+          "actual": 52.22,
+          "predicted": 71.5821
+        },
+        {
+          "actual": 77.27,
+          "predicted": 82.5039
+        },
+        {
+          "actual": 89.59,
+          "predicted": 88.8975
+        },
+        {
+          "actual": 69.65,
+          "predicted": 76.7475
+        },
+        {
+          "actual": 66.05,
+          "predicted": 67.3942
+        },
+        {
+          "actual": 91.93,
+          "predicted": 84.8044
+        },
+        {
+          "actual": 58.86,
+          "predicted": 73.3302
+        },
+        {
+          "actual": 86.49,
+          "predicted": 75.007
+        },
+        {
+          "actual": 77.48,
+          "predicted": 70.6306
+        },
+        {
+          "actual": 99.99,
+          "predicted": 91.7914
+        },
+        {
+          "actual": 99.01,
+          "predicted": 97.3598
+        },
+        {
+          "actual": 55.79,
+          "predicted": 59.1413
+        },
+        {
+          "actual": 89.12,
+          "predicted": 84.8831
+        },
+        {
+          "actual": 61.75,
+          "predicted": 89.8227
+        },
+        {
+          "actual": 85.88,
+          "predicted": 71.0568
+        },
+        {
+          "actual": 91.77,
+          "predicted": 62.9643
+        },
+        {
+          "actual": 87.05,
+          "predicted": 80.6175
+        },
+        {
+          "actual": 70.21,
+          "predicted": 72.693
+        },
+        {
+          "actual": 75.86,
+          "predicted": 71.7952
+        },
+        {
+          "actual": 73.49,
+          "predicted": 61.1646
+        },
+        {
+          "actual": 65.66,
+          "predicted": 103.4818
+        },
+        {
+          "actual": 90.4,
+          "predicted": 58.1565
+        },
+        {
+          "actual": 79.82,
+          "predicted": 70.9997
+        },
+        {
+          "actual": 62.83,
+          "predicted": 71.0181
+        },
+        {
+          "actual": 91.45,
+          "predicted": 76.9825
+        },
+        {
+          "actual": 95.02,
+          "predicted": 56.5518
+        },
+        {
+          "actual": 68.95,
+          "predicted": 71.2968
+        },
+        {
+          "actual": 76.55,
+          "predicted": 90.668
+        },
+        {
+          "actual": 80.2,
+          "predicted": 79.9322
+        },
+        {
+          "actual": 73.71,
+          "predicted": 64.4832
+        },
+        {
+          "actual": 50.11,
+          "predicted": 72.0658
+        },
+        {
+          "actual": 79.93,
+          "predicted": 64.4171
+        },
+        {
+          "actual": 74.39,
+          "predicted": 74.8026
+        },
+        {
+          "actual": 79.51,
+          "predicted": 68.2402
+        },
+        {
+          "actual": 77.98,
+          "predicted": 63.8372
+        },
+        {
+          "actual": 58.37,
+          "predicted": 67.0594
+        },
+        {
+          "actual": 88.68,
+          "predicted": 80.0183
+        },
+        {
+          "actual": 75.11,
+          "predicted": 75.5643
+        }
+      ],
+      "min": 50.11,
+      "max": 103.4818
+    }
+  }
+}
