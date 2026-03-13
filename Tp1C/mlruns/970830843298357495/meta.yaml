@@ -1,0 +1,7 @@
+artifact_location: file:C:/Users/Ricardo/Documents/GitHub/AOOP/Tp1C/mlruns/970830843298357495
+creation_time: 1773143297501
+experiment_id: '970830843298357495'
+last_update_time: 1773143297501
+lifecycle_stage: active
+name: cp1-mlflow-pipeline
+workspace: default

@@ -1,0 +1,161 @@
+id_registo,unidade_organizacional,tipo_servico,indicador_si,taxa_resolucao,tempo_resposta,satisfacao_cidadao,volume_interacoes,canal_utilizado,taxa_abandono,erros_tecnicos,transparencia,feedback_cidadao,segmentacao_utilizador,area_tematica
+97,Serviços De Educação,Email,79.71,73.57,90,3.2,407,Presencial,3.64,12,Sim,Muito Satisfeito,Funcionário Público,Inovação
+50,Departamento De Inovação E Digitalização,Chatbot,96.22,84.1,104,3.8,157,Telefone,12.62,13,Sim,Sistema Lento,Utilizador Vulnerável,Habitação
+124,Serviços De Educação,Telefone,78.18,74.78,25,3.9,47,Portal,17.21,3,Não,Sistema Lento,Cidadão,Social
+52,Serviços De Educação,Atendimento Presencial,72.77,71.1,6,3.9,72,Telefone,12.85,12,Sim,Processo Complicado,Reforma/Pensionista,Cultura
+104,Departamento De Saúde Pública,Balcão Único,89.84,86.96,63,3.6,132,Presencial,15.14,8,Sim,Resposta Rápida E Eficaz,Estudante,Educação
+76,Departamento De Inovação E Digitalização,Portal Online,63.36,73.0,5,4.2,387,Aplicacao_Movel,2.43,6,Sim,Sistema Lento,Cidadão,Social
+49,Gabinete De Atendimento Ao Cidadão,Portal Online,60.43,80.2,74,4.2,81,Presencial,19.19,3,Sim,Sistema Lento,Cidadão,Saúde
+83,Serviços De Ti,Balcão Único,99.47,79.02,9,3.3,347,Presencial,7.8,7,Sim,Excelente Atendimento,Empresa,Educação
+138,Direcção De Serviços Financeiros,Balcão Único,83.35,78.08,51,4.1,470,Presencial,3.59,0,Não,Processo Complicado,Reforma/Pensionista,Ambiente
+110,Serviços De Educação,Portal Online,68.94,75.22,21,3.4,235,Chatbot,21.61,9,Sim,Tempo De Espera Elevado,Empresa,Inovação
+62,Departamento De Saúde Pública,Balcão Único,91.66,75.17,104,3.0,434,Email,8.98,0,Sim,Resposta Rápida E Eficaz,Reforma/Pensionista,Saúde
+111,Departamento De Inovação E Digitalização,Email,98.53,77.98,47,3.1,341,Chatbot,13.95,8,Não,Tempo De Espera Elevado,Estudante,Ambiente
+173,Serviços De Ti,Email,99.99,92.81,96,3.7,179,Email,2.73,10,Sim,Serviço Eficiente,Empresa,Inovação
+6,Serviços De Educação,Telefone,97.66,79.82,101,4.9,186,Chatbot,23.38,12,Não,Muito Satisfeito,Reforma/Pensionista,Mobilidade
+55,Gabinete De Atendimento Ao Cidadão,Portal Online,82.94,72.29,47,4.5,252,Aplicacao_Movel,9.89,2,Sim,Muito Satisfeito,Reforma/Pensionista,Social
+190,Gabinete De Atendimento Ao Cidadão,Portal Online,80.81,95.38,19,4.6,372,Email,13.71,3,Sim,Falta De Informação,Funcionário Público,Digitalização
+44,Departamento De Saúde Pública,Balcão Único,80.21,74.96,43,3.7,162,Telefone,24.02,1,Não,Precisa Melhorias,Utilizador Vulnerável,Digitalização
+24,Direcção De Serviços Financeiros,Portal Online,85.16,83.79,88,3.5,386,Aplicacao_Movel,15.39,10,Sim,Tempo De Espera Elevado,Estudante,Educação
+78,Direcção De Recursos Humanos,Balcão Único,62.91,84.91,72,4.1,70,Portal,14.82,7,Sim,Processo Complicado,Utilizador Vulnerável,Cultura
+182,Departamento De Saúde Pública,Telefone,98.16,82.96,30,4.2,54,Aplicacao_Movel,9.39,9,Sim,Excelente Atendimento,Reforma/Pensionista,Digitalização
+30,Departamento De Saúde Pública,Portal Online,90.02,73.59,5,3.8,70,Portal,1.09,14,Não,Muito Satisfeito,Utilizador Vulnerável,Digitalização
+152,Serviços De Educação,Portal Online,84.54,91.29,22,4.9,49,Aplicacao_Movel,6.1,10,Não,Excelente Atendimento,Funcionário Público,Inovação
+159,Direcção De Recursos Humanos,Email,92.42,97.02,81,4.8,156,Chatbot,15.02,13,Sim,Serviço Eficiente,Utilizador Vulnerável,Mobilidade
+87,Gabinete De Atendimento Ao Cidadão,Balcão Único,97.89,94.93,78,4.2,12,Portal,14.71,5,Sim,Processo Complicado,Empresa,Social
+168,Serviços De Ti,Email,76.59,73.91,61,4.2,278,Aplicacao_Movel,21.66,5,Não,Processo Complicado,Cidadão,Social
+95,Direcção De Serviços Financeiros,Email,96.25,90.87,101,3.3,338,Chatbot,11.22,14,Sim,Precisa Melhorias,Empresa,Ambiente
+187,Departamento De Planeamento Estratégico,Portal Online,74.33,95.19,30,4.7,435,Aplicacao_Movel,15.25,7,Sim,Falta De Informação,Funcionário Público,Cultura
+170,Serviços De Ti,Portal Online,62.26,75.65,49,3.2,54,Presencial,18.81,6,Não,Processo Complicado,Utilizador Vulnerável,Ambiente
+86,Departamento De Saúde Pública,Portal Online,92.51,73.35,29,4.2,225,Telefone,0.23,3,Sim,Falta De Informação,Estudante,Mobilidade
+118,Gabinete De Atendimento Ao Cidadão,Email,62.95,73.14,117,4.5,404,Portal,16.0,10,Sim,Falta De Informação,Estudante,Cultura
+134,Direcção De Serviços Financeiros,Atendimento Presencial,71.1,84.21,17,3.3,185,Presencial,8.57,6,Sim,Sistema Lento,Empresa,Social
+183,Serviços De Educação,Email,84.25,78.44,29,3.5,323,Chatbot,7.42,6,Sim,Resposta Rápida E Eficaz,Utilizador Vulnerável,Habitação
+180,Direcção De Recursos Humanos,Portal Online,78.02,82.3,62,4.3,142,Chatbot,7.93,9,Sim,Excelente Atendimento,Utilizador Vulnerável,Mobilidade
+45,Serviços De Educação,Serviços Digitais,93.06,72.48,27,3.5,208,Presencial,10.4,13,Sim,Serviço Eficiente,Utilizador Vulnerável,Saúde
+35,Departamento De Saúde Pública,Serviços Digitais,91.06,79.68,45,3.0,304,Email,13.56,3,Não,Muito Satisfeito,Empresa,Educação
+58,Gabinete De Atendimento Ao Cidadão,Email,71.73,71.71,107,4.0,116,Email,19.82,3,Não,Bom Serviço,Funcionário Público,Educação
+178,Departamento De Planeamento Estratégico,Serviços Digitais,93.99,80.99,56,4.6,197,Chatbot,22.53,2,Sim,Sistema Lento,Cidadão,Educação
+43,Departamento De Inovação E Digitalização,Chatbot,96.1,77.8,26,4.6,235,Aplicacao_Movel,4.35,2,Não,Tempo De Espera Elevado,Reforma/Pensionista,Inovação
+145,Direcção De Recursos Humanos,Serviços Digitais,92.55,73.76,117,3.5,358,Telefone,5.86,0,Sim,Bom Serviço,Reforma/Pensionista,Inovação
+181,Gabinete De Atendimento Ao Cidadão,Balcão Único,65.17,80.55,32,4.8,244,Telefone,21.72,5,Não,Bom Serviço,Funcionário Público,Cultura
+164,Serviços De Ti,Balcão Único,98.8,71.86,118,4.7,68,Chatbot,8.71,4,Sim,Precisa Melhorias,Utilizador Vulnerável,Ambiente
+103,Departamento De Inovação E Digitalização,Email,85.97,97.62,1,4.4,332,Chatbot,9.48,11,Sim,Serviço Eficiente,Cidadão,Social
+16,Serviços De Educação,Serviços Digitais,62.85,94.15,97,3.4,162,Email,12.02,14,Sim,Tempo De Espera Elevado,Funcionário Público,Ambiente
+120,Direcção De Recursos Humanos,Serviços Digitais,98.77,97.15,41,3.2,235,Presencial,4.5,3,Sim,Tempo De Espera Elevado,Empresa,Digitalização
+162,Departamento De Inovação E Digitalização,Atendimento Presencial,83.77,96.27,49,3.9,101,Portal,16.67,2,Sim,Sistema Lento,Reforma/Pensionista,Saúde
+131,Departamento De Inovação E Digitalização,Atendimento Presencial,95.61,75.24,91,3.7,463,Aplicacao_Movel,14.5,3,Não,Serviço Eficiente,Reforma/Pensionista,Habitação
+27,Serviços De Educação,Portal Online,92.14,76.72,15,4.4,149,Presencial,18.61,6,Sim,Bom Serviço,Estudante,Ambiente
+38,Departamento De Planeamento Estratégico,Portal Online,94.34,88.69,95,3.1,311,Aplicacao_Movel,10.08,14,Sim,Excelente Atendimento,Cidadão,Inovação
+23,Gabinete De Atendimento Ao Cidadão,Atendimento Presencial,87.87,97.44,109,4.3,314,Telefone,11.98,10,Sim,Tempo De Espera Elevado,Estudante,Mobilidade
+122,Gabinete De Atendimento Ao Cidadão,Telefone,85.18,92.88,63,4.0,133,Presencial,2.58,7,Sim,Muito Satisfeito,Empresa,Digitalização
+194,Serviços De Educação,Email,82.08,87.58,115,3.8,424,Email,0.37,0,Sim,Bom Serviço,Utilizador Vulnerável,Inovação
+167,Serviços De Ti,Telefone,78.75,93.57,63,3.1,178,Aplicacao_Movel,7.95,9,Não,Processo Complicado,Estudante,Ambiente
+1,Direcção De Serviços Financeiros,Telefone,83.02,87.37,36,3.8,368,Presencial,22.41,7,Sim,Processo Complicado,Empresa,Cultura
+101,Departamento De Planeamento Estratégico,Balcão Único,64.75,85.98,87,3.6,114,Portal,6.31,4,Sim,Precisa Melhorias,Funcionário Público,Social
+166,Serviços De Ti,Email,93.53,86.09,92,4.7,313,Chatbot,15.12,2,Sim,Resposta Rápida E Eficaz,Funcionário Público,Inovação
+107,Departamento De Inovação E Digitalização,Serviços Digitais,74.99,74.28,115,4.3,146,Portal,19.54,14,Sim,Muito Satisfeito,Estudante,Saúde
+174,Serviços De Educação,Atendimento Presencial,99.87,88.63,13,4.4,365,Email,16.26,6,Sim,Falta De Informação,Cidadão,Social
+149,Departamento De Planeamento Estratégico,Serviços Digitais,92.9,92.68,29,4.9,65,Aplicacao_Movel,24.47,2,Sim,Sistema Lento,Funcionário Público,Habitação
+154,Serviços De Educação,Telefone,97.31,83.2,28,4.1,470,Telefone,21.62,8,Sim,Bom Serviço,Estudante,Saúde
+100,Departamento De Planeamento Estratégico,Email,62.25,88.09,54,3.8,276,Telefone,23.71,5,Sim,Sistema Lento,Cidadão,Habitação
+57,Departamento De Inovação E Digitalização,Atendimento Presencial,77.94,95.78,46,4.7,339,Portal,14.94,9,Sim,Serviço Eficiente,Utilizador Vulnerável,Cultura
+89,Direcção De Serviços Financeiros,Balcão Único,90.14,89.01,41,3.4,236,Aplicacao_Movel,9.92,5,Sim,Bom Serviço,Utilizador Vulnerável,Habitação
+163,Departamento De Inovação E Digitalização,Balcão Único,75.24,75.07,20,4.7,362,Chatbot,14.43,6,Sim,Precisa Melhorias,Utilizador Vulnerável,Ambiente
+22,Departamento De Planeamento Estratégico,Portal Online,64.73,82.86,100,3.4,408,Telefone,16.26,11,Sim,Sistema Lento,Estudante,Habitação
+26,Serviços De Ti,Balcão Único,89.4,87.74,56,3.5,461,Presencial,11.75,4,Não,Serviço Eficiente,Cidadão,Ambiente
+48,Direcção De Recursos Humanos,Serviços Digitais,75.57,75.78,11,3.5,68,Portal,18.38,4,Sim,Falta De Informação,Utilizador Vulnerável,Habitação
+54,Departamento De Inovação E Digitalização,Email,98.02,87.58,23,4.9,382,Chatbot,0.73,11,Sim,Precisa Melhorias,Empresa,Digitalização
+81,Departamento De Saúde Pública,Portal Online,63.25,80.56,92,3.4,428,Aplicacao_Movel,2.38,12,Não,Falta De Informação,Funcionário Público,Habitação
+53,Departamento De Planeamento Estratégico,Telefone,98.0,92.38,72,3.6,319,Portal,14.7,14,Sim,Excelente Atendimento,Utilizador Vulnerável,Saúde
+98,Serviços De Ti,Telefone,60.45,77.95,110,4.2,366,Aplicacao_Movel,11.24,6,Sim,Processo Complicado,Empresa,Educação
+116,Direcção De Recursos Humanos,Serviços Digitais,81.11,81.49,52,4.2,34,Email,5.78,0,Sim,Serviço Eficiente,Cidadão,Educação
+32,Serviços De Educação,Balcão Único,99.62,73.89,47,3.4,436,Presencial,0.52,11,Sim,Precisa Melhorias,Empresa,Ambiente
+130,Direcção De Recursos Humanos,Telefone,98.02,91.55,82,4.2,411,Chatbot,24.33,2,Sim,Muito Satisfeito,Reforma/Pensionista,Mobilidade
+132,Direcção De Recursos Humanos,Portal Online,78.23,79.06,34,3.2,46,Presencial,6.36,9,Sim,Sistema Lento,Empresa,Mobilidade
+12,Gabinete De Atendimento Ao Cidadão,Chatbot,64.03,84.39,66,3.3,333,Portal,16.52,4,Não,Excelente Atendimento,Funcionário Público,Educação
+161,Gabinete De Atendimento Ao Cidadão,Serviços Digitais,66.02,90.46,105,4.9,177,Aplicacao_Movel,20.67,1,Sim,Sistema Lento,Estudante,Social
+42,Serviços De Ti,Atendimento Presencial,64.12,74.73,36,4.8,342,Email,21.01,5,Sim,Tempo De Espera Elevado,Reforma/Pensionista,Habitação
+34,Direcção De Recursos Humanos,Portal Online,74.88,75.09,76,4.8,207,Chatbot,8.31,8,Não,Falta De Informação,Reforma/Pensionista,Social
+196,Gabinete De Atendimento Ao Cidadão,Portal Online,95.07,73.9,114,4.3,365,Presencial,4.21,5,Não,Serviço Eficiente,Cidadão,Mobilidade
+11,Direcção De Serviços Financeiros,Serviços Digitais,62.77,79.75,86,3.1,167,Telefone,12.11,1,Sim,Falta De Informação,Cidadão,Digitalização
+115,Serviços De Educação,Atendimento Presencial,95.65,84.69,74,4.0,49,Aplicacao_Movel,3.07,7,Sim,Serviço Eficiente,Reforma/Pensionista,Inovação
+51,Serviços De Ti,Portal Online,63.65,89.33,38,4.1,358,Presencial,13.58,10,Não,Muito Satisfeito,Estudante,Ambiente
+185,Departamento De Planeamento Estratégico,Email,86.87,84.08,45,4.7,40,Presencial,8.21,13,Sim,Excelente Atendimento,Funcionário Público,Inovação
+10,Direcção De Serviços Financeiros,Telefone,67.83,95.32,68,3.8,385,Presencial,15.31,4,Sim,Serviço Eficiente,Reforma/Pensionista,Cultura
+47,Direcção De Recursos Humanos,Portal Online,95.82,82.9,20,4.2,269,Portal,15.72,3,Sim,Resposta Rápida E Eficaz,Cidadão,Social
+114,Serviços De Ti,Chatbot,61.73,72.25,9,3.1,472,Portal,24.67,7,Não,Falta De Informação,Cidadão,Social
+199,Departamento De Planeamento Estratégico,Chatbot,61.15,84.94,92,4.5,86,Telefone,12.51,3,Sim,Sistema Lento,Estudante,Social
+193,Direcção De Recursos Humanos,Telefone,94.09,96.32,78,4.5,48,Email,11.11,7,Sim,Falta De Informação,Empresa,Social
+79,Direcção De Recursos Humanos,Telefone,92.87,76.79,106,4.3,388,Portal,14.49,0,Não,Bom Serviço,Empresa,Mobilidade
+20,Serviços De Ti,Atendimento Presencial,92.58,83.78,31,3.2,472,Presencial,18.12,13,Sim,Excelente Atendimento,Empresa,Digitalização
+33,Departamento De Inovação E Digitalização,Serviços Digitais,76.5,87.94,68,3.6,389,Aplicacao_Movel,16.33,14,Sim,Resposta Rápida E Eficaz,Utilizador Vulnerável,Habitação
+153,Serviços De Educação,Chatbot,76.73,86.68,26,3.4,356,Portal,20.77,9,Sim,Bom Serviço,Cidadão,Cultura
+102,Serviços De Educação,Telefone,64.7,79.97,57,3.7,449,Chatbot,8.98,5,Sim,Processo Complicado,Funcionário Público,Saúde
+67,Gabinete De Atendimento Ao Cidadão,Serviços Digitais,81.98,80.33,111,3.3,14,Telefone,19.4,13,Não,Bom Serviço,Utilizador Vulnerável,Mobilidade
+127,Departamento De Inovação E Digitalização,Serviços Digitais,96.05,85.59,38,4.6,398,Chatbot,17.15,9,Sim,Falta De Informação,Cidadão,Social
+112,Gabinete De Atendimento Ao Cidadão,Portal Online,60.49,74.85,73,3.5,179,Telefone,13.5,12,Sim,Sistema Lento,Utilizador Vulnerável,Cultura
+192,Serviços De Educação,Telefone,80.81,73.27,1,3.7,167,Email,13.64,8,Sim,Sistema Lento,Utilizador Vulnerável,Habitação
+13,Serviços De Ti,Email,60.73,91.94,10,4.4,155,Aplicacao_Movel,13.83,14,Sim,Precisa Melhorias,Estudante,Educação
+198,Serviços De Ti,Email,65.36,87.36,118,5.0,215,Portal,18.98,6,Sim,Tempo De Espera Elevado,Estudante,Digitalização
+151,Gabinete De Atendimento Ao Cidadão,Email,89.03,89.08,107,4.4,363,Aplicacao_Movel,0.44,6,Não,Sistema Lento,Funcionário Público,Inovação
+84,Direcção De Serviços Financeiros,Atendimento Presencial,74.97,75.92,118,4.8,71,Telefone,9.98,3,Sim,Precisa Melhorias,Funcionário Público,Cultura
+200,Serviços De Ti,Email,90.21,95.03,113,3.8,486,Portal,13.56,12,Sim,Serviço Eficiente,Cidadão,Digitalização
+56,Gabinete De Atendimento Ao Cidadão,Serviços Digitais,85.27,94.46,90,3.3,375,Portal,15.15,7,Sim,Processo Complicado,Reforma/Pensionista,Ambiente
+137,Direcção De Serviços Financeiros,Balcão Único,74.13,87.1,108,3.4,462,Chatbot,3.32,14,Sim,Falta De Informação,Empresa,Digitalização
+109,Serviços De Educação,Telefone,94.74,74.5,15,4.5,418,Aplicacao_Movel,11.16,7,Sim,Resposta Rápida E Eficaz,Cidadão,Digitalização
+175,Departamento De Inovação E Digitalização,Balcão Único,82.22,84.65,94,3.1,200,Presencial,19.13,7,Não,Muito Satisfeito,Reforma/Pensionista,Educação
+157,Direcção De Recursos Humanos,Telefone,61.05,96.03,49,4.4,271,Presencial,19.89,12,Não,Precisa Melhorias,Utilizador Vulnerável,Habitação
+74,Serviços De Educação,Chatbot,84.73,84.33,112,4.8,108,Aplicacao_Movel,1.73,12,Sim,Resposta Rápida E Eficaz,Empresa,Saúde
+19,Departamento De Inovação E Digitalização,Serviços Digitais,60.93,95.94,13,3.0,446,Presencial,10.97,5,Não,Processo Complicado,Reforma/Pensionista,Digitalização
+150,Serviços De Educação,Chatbot,97.99,77.13,63,3.1,49,Email,9.36,11,Não,Tempo De Espera Elevado,Empresa,Habitação
+158,Serviços De Educação,Balcão Único,75.06,93.26,71,3.6,225,Aplicacao_Movel,22.97,8,Sim,Muito Satisfeito,Reforma/Pensionista,Cultura
+69,Direcção De Recursos Humanos,Portal Online,95.51,90.93,60,5.0,63,Telefone,15.05,6,Não,Falta De Informação,Estudante,Educação
+184,Direcção De Recursos Humanos,Portal Online,69.15,90.93,49,3.0,258,Telefone,16.23,12,Sim,Sistema Lento,Cidadão,Social
+140,Departamento De Inovação E Digitalização,Telefone,98.98,74.32,24,4.5,123,Aplicacao_Movel,18.32,11,Sim,Muito Satisfeito,Empresa,Cultura
+39,Gabinete De Atendimento Ao Cidadão,Portal Online,77.16,74.82,115,3.4,353,Email,5.51,3,Sim,Precisa Melhorias,Utilizador Vulnerável,Saúde
+108,Departamento De Inovação E Digitalização,Email,71.43,76.89,40,4.9,204,Presencial,17.63,9,Não,Bom Serviço,Cidadão,Cultura
+121,Serviços De Educação,Portal Online,80.92,94.23,35,4.5,481,Telefone,2.21,1,Sim,Resposta Rápida E Eficaz,Utilizador Vulnerável,Mobilidade
+128,Serviços De Educação,Atendimento Presencial,61.82,86.01,2,4.4,185,Aplicacao_Movel,0.43,8,Sim,Precisa Melhorias,Empresa,Habitação
+9,Direcção De Recursos Humanos,Balcão Único,96.21,82.25,33,4.3,151,Email,19.59,11,Sim,Precisa Melhorias,Estudante,Saúde
+169,Serviços De Ti,Portal Online,70.94,92.27,104,3.5,372,Aplicacao_Movel,24.83,12,Não,Excelente Atendimento,Empresa,Educação
+147,Direcção De Recursos Humanos,Balcão Único,66.5,97.72,33,3.4,195,Telefone,6.38,4,Sim,Serviço Eficiente,Reforma/Pensionista,Ambiente
+99,Gabinete De Atendimento Ao Cidadão,Serviços Digitais,78.75,80.17,36,3.5,107,Email,14.7,5,Sim,Excelente Atendimento,Estudante,Mobilidade
+18,Direcção De Recursos Humanos,Telefone,93.8,74.12,38,4.3,202,Email,4.1,6,Sim,Resposta Rápida E Eficaz,Funcionário Público,Inovação
+66,Departamento De Saúde Pública,Serviços Digitais,62.3,87.31,97,3.5,271,Portal,5.89,8,Sim,Precisa Melhorias,Reforma/Pensionista,Habitação
+4,Departamento De Planeamento Estratégico,Email,78.33,73.82,57,3.4,74,Aplicacao_Movel,15.32,11,Sim,Processo Complicado,Funcionário Público,Digitalização
+177,Direcção De Serviços Financeiros,Telefone,97.79,94.56,51,4.1,431,Email,10.95,13,Não,Processo Complicado,Utilizador Vulnerável,Cultura
+65,Serviços De Educação,Chatbot,79.78,83.57,89,4.3,385,Chatbot,20.9,9,Não,Precisa Melhorias,Estudante,Saúde
+72,Departamento De Saúde Pública,Serviços Digitais,65.72,89.97,108,3.5,186,Presencial,12.82,9,Sim,Falta De Informação,Utilizador Vulnerável,Educação
+91,Direcção De Recursos Humanos,Email,63.34,83.96,11,3.8,278,Chatbot,5.87,11,Sim,Muito Satisfeito,Cidadão,Ambiente
+94,Direcção De Recursos Humanos,Telefone,76.97,86.43,46,3.1,98,Portal,8.27,9,Não,Serviço Eficiente,Estudante,Ambiente
+29,Gabinete De Atendimento Ao Cidadão,Balcão Único,67.1,73.61,8,4.7,302,Presencial,10.84,6,Não,Serviço Eficiente,Estudante,Inovação
+106,Direcção De Recursos Humanos,Chatbot,98.49,72.85,55,4.0,38,Presencial,13.34,8,Sim,Serviço Eficiente,Cidadão,Mobilidade
+125,Gabinete De Atendimento Ao Cidadão,Balcão Único,85.1,88.72,90,3.5,337,Presencial,9.93,11,Sim,Processo Complicado,Reforma/Pensionista,Social
+28,Departamento De Saúde Pública,Chatbot,71.28,72.12,29,4.7,196,Email,21.8,10,Sim,Resposta Rápida E Eficaz,Empresa,Saúde
+82,Departamento De Saúde Pública,Portal Online,63.39,70.56,31,3.0,187,Presencial,16.3,9,Não,Muito Satisfeito,Reforma/Pensionista,Inovação
+8,Departamento De Inovação E Digitalização,Atendimento Presencial,98.45,80.98,55,3.5,438,Chatbot,15.63,8,Sim,Falta De Informação,Reforma/Pensionista,Social
+165,Departamento De Saúde Pública,Balcão Único,93.68,90.75,86,3.6,68,Presencial,3.98,1,Sim,Resposta Rápida E Eficaz,Reforma/Pensionista,Ambiente
+119,Departamento De Inovação E Digitalização,Portal Online,82.15,81.14,26,3.2,452,Telefone,5.62,4,Sim,Excelente Atendimento,Estudante,Cultura
+142,Departamento De Planeamento Estratégico,Atendimento Presencial,87.93,84.91,71,4.3,310,Telefone,4.71,0,Sim,Muito Satisfeito,Empresa,Habitação
+141,Serviços De Educação,Telefone,99.45,83.47,25,4.6,49,Telefone,4.06,1,Sim,Falta De Informação,Empresa,Educação
+31,Departamento De Inovação E Digitalização,Serviços Digitais,92.27,74.25,29,4.3,494,Chatbot,4.04,4,Sim,Sistema Lento,Reforma/Pensionista,Mobilidade
+73,Direcção De Serviços Financeiros,Balcão Único,90.46,95.07,100,3.0,18,Email,10.33,6,Sim,Resposta Rápida E Eficaz,Empresa,Inovação
+25,Serviços De Educação,Serviços Digitais,95.1,79.21,52,3.2,353,Presencial,8.23,12,Sim,Tempo De Espera Elevado,Utilizador Vulnerável,Mobilidade
+60,Direcção De Serviços Financeiros,Email,86.9,92.57,90,4.6,322,Email,24.8,1,Não,Excelente Atendimento,Reforma/Pensionista,Social
+117,Serviços De Educação,Chatbot,99.72,97.51,57,3.7,270,Presencial,1.29,9,Sim,Serviço Eficiente,Cidadão,Habitação
+90,Serviços De Educação,Chatbot,75.05,92.1,86,4.8,495,Portal,5.93,0,Sim,Tempo De Espera Elevado,Reforma/Pensionista,Digitalização
+71,Serviços De Educação,Serviços Digitais,64.68,77.07,76,3.3,224,Portal,9.32,11,Sim,Tempo De Espera Elevado,Funcionário Público,Social
+135,Serviços De Educação,Serviços Digitais,67.52,76.79,43,4.9,470,Chatbot,13.31,1,Sim,Serviço Eficiente,Estudante,Inovação
+146,Gabinete De Atendimento Ao Cidadão,Telefone,87.39,71.77,88,4.0,124,Chatbot,24.08,5,Sim,Muito Satisfeito,Utilizador Vulnerável,Habitação
+85,Departamento De Inovação E Digitalização,Email,74.83,79.17,51,4.7,154,Telefone,21.45,3,Não,Processo Complicado,Utilizador Vulnerável,Mobilidade
+126,Serviços De Ti,Serviços Digitais,83.37,96.02,75,4.6,260,Aplicacao_Movel,12.0,6,Sim,Bom Serviço,Cidadão,Social
+148,Serviços De Ti,Telefone,96.44,79.03,49,5.0,332,Email,16.54,14,Sim,Falta De Informação,Utilizador Vulnerável,Social
+36,Serviços De Ti,Chatbot,73.63,95.11,2,3.2,449,Aplicacao_Movel,12.33,10,Sim,Resposta Rápida E Eficaz,Funcionário Público,Inovação
+195,Direcção De Recursos Humanos,Serviços Digitais,82.44,79.38,47,4.0,91,Email,14.68,10,Sim,Tempo De Espera Elevado,Utilizador Vulnerável,Mobilidade
+191,Departamento De Inovação E Digitalização,Atendimento Presencial,90.89,87.48,18,5.0,446,Aplicacao_Movel,14.91,2,Sim,Sistema Lento,Funcionário Público,Inovação
+80,Direcção De Serviços Financeiros,Balcão Único,88.25,77.54,113,4.7,499,Chatbot,16.57,9,Sim,Precisa Melhorias,Cidadão,Digitalização
+64,Gabinete De Atendimento Ao Cidadão,Email,63.65,80.37,82,4.1,268,Presencial,11.65,3,Sim,Muito Satisfeito,Cidadão,Social
+7,Direcção De Recursos Humanos,Telefone,75.44,86.52,27,3.7,12,Chatbot,23.68,9,Sim,Muito Satisfeito,Reforma/Pensionista,Social
+156,Departamento De Inovação E Digitalização,Atendimento Presencial,61.81,79.77,85,3.1,298,Chatbot,2.83,12,Sim,Processo Complicado,Empresa,Digitalização
+75,Direcção De Recursos Humanos,Atendimento Presencial,64.04,84.9,68,3.2,29,Presencial,10.93,14,Sim,Muito Satisfeito,Funcionário Público,Saúde

@@ -1,0 +1,15 @@
+artifact_uri: file:C:/Users/Ricardo/Documents/GitHub/AOOP/Tp1C/mlruns/970830843298357495/38fc6db2a67b42819550f0dde4174628/artifacts
+deleted_time: 1773144734488
+end_time: 1773143302929
+entry_point_name: ''
+experiment_id: '970830843298357495'
+lifecycle_stage: deleted
+run_id: 38fc6db2a67b42819550f0dde4174628
+run_name: linear_regression
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1773143301854
+status: 4
+tags: []
+user_id: Ricardo

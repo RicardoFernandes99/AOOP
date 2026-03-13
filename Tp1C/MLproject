@@ -1,0 +1,21 @@
+name: cp1_mlflow_pipeline
+
+python_env: python_env.yaml
+
+entry_points:
+  main:
+    parameters:
+      data: {type: str}
+      experiment_name: {type: str, default: "cp1-mlflow-pipeline"}
+      tracking_uri: {type: str, default: "file:./mlruns"}
+      artifact_dir: {type: str, default: "artifacts"}
+      test_size: {type: float, default: 0.2}
+      random_state: {type: int, default: 42}
+    command: >-
+      python main.py
+      --data {data}
+      --experiment-name {experiment_name}
+      --tracking-uri {tracking_uri}
+      --artifact-dir {artifact_dir}
+      --test-size {test_size}
+      --random-state {random_state}

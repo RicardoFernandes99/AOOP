@@ -1,0 +1,10 @@
+artifact_location: file:C:/Users/Ricardo/Documents/GitHub/AOOP/Tp1C/mlruns/970830843298357495/models/m-dc1dc4b71be1401581515aa3e0e9e5c8/artifacts
+creation_timestamp: 1773143554398
+experiment_id: '970830843298357495'
+last_updated_timestamp: 1773143565729
+model_id: m-dc1dc4b71be1401581515aa3e0e9e5c8
+model_type: null
+name: decision_tree
+source_run_id: b4fa3f9b2a7243db8186254a8037f546
+status: 2
+status_message: null

@@ -1,0 +1,64 @@
+column,category,count
+unidade_organizacional,Serviços De Educação,38
+unidade_organizacional,Direcção De Recursos Humanos,32
+unidade_organizacional,Departamento De Inovação E Digitalização,30
+unidade_organizacional,Gabinete De Atendimento Ao Cidadão,28
+unidade_organizacional,Serviços De Ti,26
+unidade_organizacional,Direcção De Serviços Financeiros,16
+unidade_organizacional,Departamento De Planeamento Estratégico,15
+unidade_organizacional,Departamento De Saúde Pública,15
+tipo_servico,Portal Online,36
+tipo_servico,Serviços Digitais,32
+tipo_servico,Telefone,32
+tipo_servico,Email,29
+tipo_servico,Balcão Único,29
+tipo_servico,Atendimento Presencial,25
+tipo_servico,Chatbot,17
+canal_utilizado,Presencial,38
+canal_utilizado,Aplicacao_Movel,37
+canal_utilizado,Chatbot,35
+canal_utilizado,Email,32
+canal_utilizado,Portal,30
+canal_utilizado,Telefone,28
+transparencia,Sim,149
+transparencia,Não,51
+feedback_cidadao,Sistema Lento,24
+feedback_cidadao,Serviço Eficiente,22
+feedback_cidadao,Precisa Melhorias,21
+feedback_cidadao,Muito Satisfeito,21
+feedback_cidadao,Falta De Informação,21
+feedback_cidadao,Tempo De Espera Elevado,20
+feedback_cidadao,Bom Serviço,19
+feedback_cidadao,Processo Complicado,19
+feedback_cidadao,Resposta Rápida E Eficaz,17
+feedback_cidadao,Excelente Atendimento,16
+segmentacao_utilizador,Empresa,37
+segmentacao_utilizador,Utilizador Vulnerável,36
+segmentacao_utilizador,Cidadão,34
+segmentacao_utilizador,Estudante,32
+segmentacao_utilizador,Reforma/Pensionista,32
+segmentacao_utilizador,Funcionário Público,29
+area_tematica,Social,30
+area_tematica,Habitação,27
+area_tematica,Inovação,26
+area_tematica,Ambiente,22
+area_tematica,Digitalização,22
+area_tematica,Cultura,21
+area_tematica,Mobilidade,18
+area_tematica,Saúde,17
+area_tematica,Educação,17
+data_registo,2024-08-18,4
+data_registo,2024-09-27,3
+data_registo,2024-12-25,3
+data_registo,2024-05-10,3
+data_registo,2024-07-08,3
+data_registo,2024-08-02,2
+data_registo,2024-11-26,2
+data_registo,2024-04-12,2
+data_registo,2024-12-09,2
+data_registo,2024-09-08,2
+data_registo,2024-02-13,2
+data_registo,2024-08-05,2
+data_registo,2024-01-15,2
+data_registo,2024-11-22,2
+data_registo,2024-02-04,2

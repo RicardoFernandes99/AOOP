@@ -1,0 +1,15 @@
+artifact_uri: file:C:/Users/Ricardo/Documents/GitHub/AOOP/Tp1C/mlruns/970830843298357495/0d111f35d4bb45a39917c78a4cdcfbcd/artifacts
+deleted_time: 1773144726454
+end_time: 1773143302939
+entry_point_name: ''
+experiment_id: '970830843298357495'
+lifecycle_stage: deleted
+run_id: 0d111f35d4bb45a39917c78a4cdcfbcd
+run_name: cp1_full_pipeline
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1773143299368
+status: 4
+tags: []
+user_id: Ricardo
