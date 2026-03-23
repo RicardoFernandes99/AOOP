@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/Ricardo/Documents/GitHub/AOOP/Tp1C/mlruns/102946472505439372/743410cd82d94535bf937c594e4e4e63/artifacts
+end_time: 1774288919337
+entry_point_name: ''
+experiment_id: '102946472505439372'
+lifecycle_stage: active
+run_id: 743410cd82d94535bf937c594e4e4e63
+run_name: run_4_test_2
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1774288919268
+status: 3
+tags: []
+user_id: Ricardo
