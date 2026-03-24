@@ -114,14 +114,12 @@
         <section id="sec-linear_regression" class="section"></section>
         <section id="sec-random_forest" class="section"></section>
         <section id="sec-decision_tree" class="section"></section>
-        <section id="sec-logistic_c_1" class="section"></section>
-        <section id="sec-logistic_c_100" class="section"></section>
-        <section id="sec-logistic_c_001" class="section"></section>
+        <div id="logistic-sections"></div>
       </main>
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="teste/artifacts/model_stats.js"></script>
+  <script src="artifacts/model_stats.js"></script>
   <script>
     const chartInstances = [];
 
@@ -197,6 +195,22 @@
         const key = sectionKeyForC(variant.c);
         return `<button class="navbtn subnav" onclick="showSection('${key}',this)">${formatCLabel(variant.c)}</button>`;
       }).join('');
+    }
+    function syncLogisticSections(variants) {
+      const container = document.getElementById('logistic-sections');
+      if (!container) return;
+      const targetIds = new Set(variants.map((variant) => `sec-${sectionKeyForC(variant.c)}`));
+      Array.from(container.querySelectorAll('.section')).forEach((section) => {
+        if (!targetIds.has(section.id)) section.remove();
+      });
+      variants.forEach((variant) => {
+        const sectionId = `sec-${sectionKeyForC(variant.c)}`;
+        if (document.getElementById(sectionId)) return;
+        const section = document.createElement('section');
+        section.id = sectionId;
+        section.className = 'section';
+        container.appendChild(section);
+      });
     }
     function destroyCharts() {
       while (chartInstances.length) {
@@ -414,6 +428,7 @@
     function renderDashboard(stats) {
       destroyCharts();
       renderLogisticNav(stats.models.logistic_regression.metrics.variants);
+      syncLogisticSections(stats.models.logistic_regression.metrics.variants);
       document.getElementById('sec-overview').innerHTML = renderOverview(stats);
       document.getElementById('sec-linear_regression').innerHTML = renderRegressionModel(stats.models.linear_regression);
       document.getElementById('sec-random_forest').innerHTML = renderRegressionModel(stats.models.random_forest);
@@ -433,7 +448,7 @@
       setLogisticNavOpen(false);
     } else {
       document.querySelectorAll('.section').forEach((section) => {
-        section.innerHTML = '<div class="empty">Bundle missing. Run <strong>python teste/main.py</strong> to generate the frontend data.</div>';
+        section.innerHTML = '<div class="empty">Bundle missing. Run <strong>python generate_dashboard_bundle.py</strong> to generate the frontend data from the latest MLflow run.</div>';
       });
     }
   </script>
