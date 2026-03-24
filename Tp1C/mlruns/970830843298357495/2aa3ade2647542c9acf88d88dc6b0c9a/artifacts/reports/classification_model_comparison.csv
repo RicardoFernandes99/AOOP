@@ -1,2 +1,0 @@
-model_name,accuracy,precision,recall,f1,roc_auc,model_uri
-logistic_regression,0.625,0.6923076923076923,0.72,0.7058823529411765,0.6586666666666666,models:/m-94fdf295271d48a68a6dfc34774ce19e

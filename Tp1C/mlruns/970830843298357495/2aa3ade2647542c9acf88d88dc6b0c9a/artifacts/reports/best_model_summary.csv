@@ -1,2 +1,0 @@
-best_regression_model,mae,mse,rmse,r2,classification_model,classification_accuracy,classification_f1
-random_forest,12.655790000000007,233.0063313695001,15.264544911968391,-0.18690101424099437,logistic_regression,0.625,0.7058823529411765
