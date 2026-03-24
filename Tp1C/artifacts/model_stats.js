@@ -190,7 +190,8 @@ window.MODEL_STATS = {
             }
           ]
         }
-      }
+      },
+      "tree": null
     },
     "random_forest": {
       "key": "random_forest",
@@ -378,7 +379,8 @@ window.MODEL_STATS = {
             }
           ]
         }
-      }
+      },
+      "tree": null
     },
     "decision_tree": {
       "key": "decision_tree",
@@ -565,6 +567,78 @@ window.MODEL_STATS = {
               "predicted": 89.13666666666666
             }
           ]
+        }
+      },
+      "tree": {
+        "max_depth": 6,
+        "node_count": 91,
+        "n_leaves": 46,
+        "preview_depth": 2,
+        "root": {
+          "node_id": 0,
+          "depth": 0,
+          "samples": 160,
+          "value": 74.6923125,
+          "impurity": 210.74343902734472,
+          "is_leaf": false,
+          "label": "num__volume_interacoes",
+          "threshold": 0.6529774069786072,
+          "left": {
+            "node_id": 1,
+            "depth": 1,
+            "samples": 104,
+            "value": 77.06096153846151,
+            "impurity": 204.55822599851763,
+            "is_leaf": false,
+            "label": "num__satisfacao_cidadao",
+            "threshold": 0.875,
+            "left": {
+              "node_id": 2,
+              "depth": 2,
+              "samples": 92,
+              "value": 78.37956521739127,
+              "impurity": 204.45818676748786,
+              "is_leaf": false,
+              "label": "leaf"
+            },
+            "right": {
+              "node_id": 31,
+              "depth": 2,
+              "samples": 12,
+              "value": 66.95166666666667,
+              "impurity": 89.79719722223945,
+              "is_leaf": false,
+              "label": "leaf"
+            }
+          },
+          "right": {
+            "node_id": 50,
+            "depth": 1,
+            "samples": 56,
+            "value": 70.29339285714286,
+            "impurity": 192.46027241709726,
+            "is_leaf": false,
+            "label": "num__erros_tecnicos",
+            "threshold": 0.6785714328289032,
+            "left": {
+              "node_id": 51,
+              "depth": 2,
+              "samples": 35,
+              "value": 66.28142857142858,
+              "impurity": 168.53823510204347,
+              "is_leaf": false,
+              "label": "leaf"
+            },
+            "right": {
+              "node_id": 68,
+              "depth": 2,
+              "samples": 21,
+              "value": 76.97999999999999,
+              "impurity": 160.79319047618446,
+              "is_leaf": false,
+              "label": "leaf"
+            }
+          }
         }
       }
     },
