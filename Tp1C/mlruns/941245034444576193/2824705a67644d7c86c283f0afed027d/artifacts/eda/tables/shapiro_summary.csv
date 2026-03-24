@@ -1,0 +1,9 @@
+column,p_value,is_normal_at_0_05
+indicador_si,5.9445345646972045e-08,False
+taxa_resolucao,1.2690911048767517e-06,False
+tempo_resposta,8.183639783677511e-06,False
+satisfacao_cidadao,6.389928151321671e-07,False
+volume_interacoes,2.572514804902532e-06,False
+taxa_abandono,0.0007590886044518192,False
+erros_tecnicos,3.7017448147350503e-06,False
+indicador_kpi,1.2307636156065294e-05,False

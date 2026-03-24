@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/Ricardo/Documents/GitHub/AOOP/Tp1C/mlruns/941245034444576193/8ad5b573960a48ae87bb336cb4d548de/artifacts
+end_time: 1774353073745
+entry_point_name: ''
+experiment_id: '941245034444576193'
+lifecycle_stage: active
+run_id: 8ad5b573960a48ae87bb336cb4d548de
+run_name: decision_tree_regressor
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1774353068070
+status: 3
+tags: []
+user_id: Ricardo

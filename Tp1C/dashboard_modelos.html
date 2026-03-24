@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard de Analise dos Modelos</title>
+  <style>
+    :root{--bg:#f5f7fb;--card:#fff;--line:#dbe3ef;--text:#0f172a;--muted:#475569;--acc:#5b6cff;--acc2:#eef2ff;--ok:#0f9d72;--warn:#d97706;--shadow:0 8px 24px rgba(15,23,42,.04)}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(180deg,#edf2fb 0%,#f8fbff 100%);color:var(--text)}
+    .app{margin:20px;background:var(--bg);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+    .shell{display:grid;grid-template-columns:240px 1fr;min-height:920px}
+    .sidebar{padding:22px 16px;background:linear-gradient(180deg,#fff 0%,#f8fbff 100%);border-right:1px solid var(--line)}
+    .brand{display:flex;gap:12px;align-items:center;margin-bottom:26px}
+    .logo{width:42px;height:42px;border-radius:12px;background:var(--acc);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;box-shadow:0 10px 25px rgba(91,108,255,.18)}
+    .brand h1{font-size:22px;margin:0}
+    .brand p,.small,.sub,.list,.foot,.navtitle{color:var(--muted)}
+    .brand p{margin:4px 0 0;font-size:13px;line-height:1.4}
+    .navtitle{font-size:12px;text-transform:uppercase;letter-spacing:.08em;margin:18px 10px 10px}
+    .navbtn{width:100%;border:1px solid transparent;background:transparent;padding:12px 14px;border-radius:14px;text-align:left;font-size:15px;font-weight:600;color:var(--text);cursor:pointer;margin-bottom:8px}
+    .navgroup{margin-bottom:8px}
+    .navtoggle{display:flex;align-items:center;justify-content:space-between}
+    .navtoggle::after{content:'+';font-size:18px;line-height:1;color:var(--muted)}
+    .navtoggle.open::after{content:'-'}
+    .navbtn.subnav{margin-left:14px;width:calc(100% - 14px);padding:10px 12px;font-size:14px}
+    .subnav-wrap{display:none;padding-top:4px}
+    .subnav-wrap.open{display:block}
+    .navbtn:hover{background:#f8fafc;border-color:var(--line)}
+    .navbtn.active{background:var(--acc2);color:var(--acc);border-color:#c7d2fe;box-shadow:inset 0 0 0 1px #c7d2fe}
+    .side-note{margin-top:18px;padding:14px;border-radius:16px;border:1px solid var(--line);background:#fff;font-size:13px;line-height:1.5;color:var(--muted)}
+    .main{padding:22px}
+    .top h2{margin:0;font-size:28px}
+    .top p{margin:6px 0 18px;color:var(--muted);font-size:14px;max-width:860px;line-height:1.5}
+    .section{display:none}
+    .section.active{display:block}
+    .hero,.grid2,.grid1,.grid3,.kpis{display:grid;gap:16px}
+    .hero,.grid2{grid-template-columns:1fr 1fr}
+    .grid1{grid-template-columns:1fr}
+    .grid3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .kpis{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .overview-grid{margin-bottom:22px}
+    .card,.kpi{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:18px}
+    .hero{padding:22px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(135deg,#fff 0%,#eef4ff 50%,#f7fbff 100%);margin-bottom:18px;box-shadow:var(--shadow)}
+    .hero h3,.title{margin:0 0 6px}
+    .hero p,.list{line-height:1.6}
+    .list{margin:0;padding-left:18px}
+    .signal{background:#0f172a;color:#fff;border-radius:18px;padding:18px;display:flex;flex-direction:column;justify-content:space-between}
+    .signal .big{font-size:44px;font-weight:700;margin:8px 0}
+    .signal .small{color:rgba(255,255,255,.75)}
+    .kpi .label,.small{font-size:12px;color:var(--muted)}
+    .kpi .value{font-size:30px;font-weight:700;margin:8px 0 6px}
+    .kpi .meta{font-size:12px;color:var(--acc);font-weight:600}
+    .head{margin-bottom:12px}
+    .head .title{font-size:16px;font-weight:700}
+    .head .sub{font-size:13px;line-height:1.5}
+    .bars{display:grid;gap:14px}
+    .bar{display:grid;grid-template-columns:190px 1fr 72px;gap:12px;align-items:center}
+    .track{height:12px;background:#edf2ff;border-radius:999px;overflow:hidden}
+    .track.signed{position:relative;background:linear-gradient(90deg,#eef2ff 0%,#eef2ff 49.5%,#cbd5e1 49.5%,#cbd5e1 50.5%,#eef2ff 50.5%,#eef2ff 100%)}
+    .fill{height:100%;background:linear-gradient(90deg,#94a3ff 0%,var(--acc) 100%);border-radius:999px}
+    .fill.ok{background:linear-gradient(90deg,#86efac 0%,#16a34a 100%)}
+    .fill.warn{background:linear-gradient(90deg,#fdba74 0%,#ea580c 100%)}
+    .fill.signed{position:absolute;top:0;height:100%;border-radius:999px}
+    .pill{display:inline-flex;align-items:center;padding:5px 10px;border-radius:999px;font-size:12px;font-weight:700;vertical-align:middle;margin-left:10px}
+    .pill.ok{background:rgba(15,157,114,.12);color:var(--ok)}
+    .pill.gold{background:rgba(234,179,8,.16);color:#a16207}
+    .pill.silver{background:rgba(148,163,184,.16);color:#475569}
+    .pill.bronze{background:rgba(234,88,12,.14);color:#9a3412}
+    table{width:100%;border-collapse:collapse;font-size:14px}
+    th,td{padding:12px 10px;border-bottom:1px solid var(--line);text-align:left}
+    th{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.05em}
+    tr:last-child td{border-bottom:0}
+    .plot-card{display:flex;flex-direction:column}
+    .model-summary{display:grid;gap:18px}
+    .model-summary-block{padding:4px 0}
+    .plot-wrap{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;height:420px}
+    .plot-wrap canvas{width:100% !important;height:100% !important;display:block}
+    .matrix-grid{display:grid;grid-template-columns:120px repeat(2,minmax(0,1fr));gap:10px}
+    .matrix-label,.matrix-cell{border:1px solid var(--line);border-radius:14px;padding:18px}
+    .matrix-label{background:#f8fbff;color:var(--muted);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;text-align:center}
+    .matrix-cell{background:#fff;text-align:center}
+    .matrix-cell strong{display:block;font-size:32px;margin-bottom:6px;color:var(--text)}
+    .matrix-cell.hit{background:rgba(15,157,114,.08)}
+    .matrix-cell.miss{background:rgba(220,38,38,.06)}
+    .empty{padding:18px;border:1px dashed var(--line);border-radius:18px;background:#fff;color:var(--muted)}
+    .foot{margin-top:18px;font-size:12px;line-height:1.6}
+    @media (max-width:1080px){.hero,.grid2,.grid3,.kpis{grid-template-columns:1fr}.bar{grid-template-columns:1fr}}
+    @media (max-width:860px){.app{margin:0;border-radius:0}.shell{grid-template-columns:1fr}.sidebar{border-right:0;border-bottom:1px solid var(--line)}}
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="logo">ML</div>
+          <div>
+            <h1>Dashboard</h1>
+          </div>
+        </div>
+        <div class="navtitle">Overview</div>
+        <button class="navbtn active" onclick="showSection('overview',this)">Overview</button>
+        <div class="navtitle">Models</div>
+        <button class="navbtn" onclick="showSection('linear_regression',this)">Linear Regression</button>
+        <button class="navbtn" onclick="showSection('random_forest',this)">Random Forest</button>
+        <button class="navbtn" onclick="showSection('decision_tree',this)">Decision Tree</button>
+        <div class="navgroup">
+          <button id="logistic-toggle" class="navbtn navtoggle" onclick="toggleLogisticNav(this)">Logistic Regression</button>
+          <div id="logistic-nav" class="subnav-wrap"></div>
+        </div>
+      </aside>
+      <main class="main">
+        <section id="sec-overview" class="section active"></section>
+        <section id="sec-linear_regression" class="section"></section>
+        <section id="sec-random_forest" class="section"></section>
+        <section id="sec-decision_tree" class="section"></section>
+        <section id="sec-logistic_c_1" class="section"></section>
+        <section id="sec-logistic_c_100" class="section"></section>
+        <section id="sec-logistic_c_001" class="section"></section>
+      </main>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="teste/artifacts/model_stats.js"></script>
+  <script>
+    const chartInstances = [];
+
+    function showSection(name, btn) {
+      document.querySelectorAll('.section').forEach((el) => el.classList.remove('active'));
+      document.querySelectorAll('.navbtn').forEach((el) => el.classList.remove('active'));
+      const section = document.getElementById('sec-' + name);
+      if (section) section.classList.add('active');
+      if (btn) btn.classList.add('active');
+      if (name.startsWith('logistic_c_')) {
+        setLogisticNavOpen(true);
+      }
+    }
+    function setLogisticNavOpen(isOpen) {
+      const toggle = document.getElementById('logistic-toggle');
+      const nav = document.getElementById('logistic-nav');
+      if (!toggle || !nav) return;
+      toggle.classList.toggle('open', isOpen);
+      nav.classList.toggle('open', isOpen);
+    }
+    function toggleLogisticNav(btn) {
+      const willOpen = !btn.classList.contains('open');
+      setLogisticNavOpen(willOpen);
+    }
+
+    function fmt(value, digits = 2) { return Number(value).toFixed(digits); }
+    function pct(value, digits = 1) { return `${(Number(value) * 100).toFixed(digits)}%`; }
+    function escapeHtml(value) {
+      return String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+    }
+    function formatCLabel(value) {
+      if (Number(value) === 0.01) return 'C = 0.01';
+      if (Number(value) === 1) return 'C = 1';
+      if (Number(value) === 100) return 'C = 100';
+      return `C = ${value}`;
+    }
+    function sectionKeyForC(value) {
+      if (Number(value) === 0.01) return 'logistic_c_001';
+      if (Number(value) === 1) return 'logistic_c_1';
+      if (Number(value) === 100) return 'logistic_c_100';
+      return `logistic_c_${String(value).replace('.', '_')}`;
+    }
+    function renderBar(label, value, max, cls = '', badgeLabel = '', badgeClass = 'ok') {
+      const width = max === 0 ? 0 : Math.max(8, (value / max) * 100);
+      return `<div class="bar"><div>${label}${badgeLabel ? ` <span class="pill ${badgeClass}">${badgeLabel}</span>` : ''}</div><div class="track"><div class="fill ${cls}" style="width:${width}%"></div></div><div class="small">${fmt(value)}</div></div>`;
+    }
+    function renderSignedBar(label, value, min = -1, max = 1, cls = '', badgeLabel = '', badgeClass = 'ok') {
+      const clamped = Math.max(min, Math.min(max, value));
+      const width = ((clamped - min) / (max - min)) * 100;
+      return `<div class="bar"><div>${label}${badgeLabel ? ` <span class="pill ${badgeClass}">${badgeLabel}</span>` : ''}</div><div class="track signed"><div class="fill signed ${cls}" style="left:0;width:${Math.max(width, 0)}%"></div></div><div class="small">${fmt(value, 4)}</div></div>`;
+    }
+    function renderRegressionCanvas(modelKey, title) {
+      return `<div class="plot-wrap"><canvas id="chart-${modelKey}" aria-label="${escapeHtml(title)}"></canvas></div>`;
+    }
+    function renderConfusionMatrix(confusionMatrix) {
+      return `
+        <div class="matrix-grid">
+          <div class="matrix-label"></div>
+          <div class="matrix-label">Pred 0</div>
+          <div class="matrix-label">Pred 1</div>
+          <div class="matrix-label">Real 0</div>
+          <div class="matrix-cell hit"><strong>${confusionMatrix[0][0]}</strong><span>Correct negatives</span></div>
+          <div class="matrix-cell miss"><strong>${confusionMatrix[0][1]}</strong><span>False positives</span></div>
+          <div class="matrix-label">Real 1</div>
+          <div class="matrix-cell miss"><strong>${confusionMatrix[1][0]}</strong><span>False negatives</span></div>
+          <div class="matrix-cell hit"><strong>${confusionMatrix[1][1]}</strong><span>Correct positives</span></div>
+        </div>`;
+    }
+    function renderLogisticNav(variants) {
+      const nav = document.getElementById('logistic-nav');
+      if (!nav) return;
+      nav.innerHTML = variants.map((variant) => {
+        const key = sectionKeyForC(variant.c);
+        return `<button class="navbtn subnav" onclick="showSection('${key}',this)">${formatCLabel(variant.c)}</button>`;
+      }).join('');
+    }
+    function destroyCharts() {
+      while (chartInstances.length) {
+        const chart = chartInstances.pop();
+        chart.destroy();
+      }
+    }
+    function initRegressionChart(modelKey, plot, label) {
+      const canvas = document.getElementById(`chart-${modelKey}`);
+      if (!canvas || typeof Chart === 'undefined') return;
+      const min = plot.min;
+      const max = plot.max;
+      const chart = new Chart(canvas, {
+        type: 'scatter',
+        data: {
+          datasets: [
+            {
+              label,
+              data: plot.points.map((point) => ({ x: point.actual, y: point.predicted })),
+              backgroundColor: 'rgba(91, 108, 255, 0.72)',
+              borderColor: 'rgba(91, 108, 255, 1)',
+              pointRadius: 5,
+              pointHoverRadius: 7
+            },
+            {
+              type: 'line',
+              label: 'Perfect prediction',
+              data: [{ x: min, y: min }, { x: max, y: max }],
+              borderColor: 'rgba(148, 163, 184, 0.9)',
+              borderDash: [8, 6],
+              borderWidth: 2,
+              pointRadius: 0
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          layout: { padding: 6 },
+          plugins: {
+            legend: { display: false },
+            title: {
+              display: true,
+              text: label,
+              align: 'start',
+              color: '#0f172a',
+              font: { size: 18, weight: '700', family: 'Arial' },
+              padding: { bottom: 16 }
+            },
+            tooltip: { enabled: true }
+          },
+          scales: {
+            x: {
+              min,
+              max,
+              title: { display: true, text: 'Actual value', color: '#475569', font: { size: 14, family: 'Arial' } },
+              ticks: { color: '#64748b' },
+              grid: { color: '#e2e8f0' }
+            },
+            y: {
+              min,
+              max,
+              title: { display: true, text: 'Predicted value', color: '#475569', font: { size: 14, family: 'Arial' } },
+              ticks: { color: '#64748b' },
+              grid: { color: '#e2e8f0' }
+            }
+          }
+        }
+      });
+      chartInstances.push(chart);
+    }
+
+    function renderOverview(stats) {
+      const ds = stats.dataset;
+      const linear = stats.models.linear_regression.metrics.selected;
+      const forest = stats.models.random_forest.metrics.selected;
+      const tree = stats.models.decision_tree.metrics.selected;
+      const regressors = [
+        { name: 'Random Forest', metrics: forest, cls: 'ok' },
+        { name: 'Decision Tree', metrics: tree, cls: '' },
+        { name: 'Linear Regression', metrics: linear, cls: 'warn' }
+      ];
+      const maxRmse = Math.max(...regressors.map((item) => item.metrics.test.rmse));
+      const maxMae = Math.max(...regressors.map((item) => item.metrics.test.mae));
+      const maxMse = Math.max(...regressors.map((item) => item.metrics.test.mse));
+      const r2Sorted = [...regressors].sort((a, b) => b.metrics.test.r2 - a.metrics.test.r2);
+      const bestMae = Math.min(...regressors.map((item) => item.metrics.test.mae));
+      const bestMse = Math.min(...regressors.map((item) => item.metrics.test.mse));
+      const bestRmse = Math.min(...regressors.map((item) => item.metrics.test.rmse));
+      const bestR2 = Math.max(...regressors.map((item) => item.metrics.test.r2));
+      const maeRank = [...regressors].sort((a, b) => a.metrics.test.mae - b.metrics.test.mae);
+      const mseRank = [...regressors].sort((a, b) => a.metrics.test.mse - b.metrics.test.mse);
+      const rmseRank = [...regressors].sort((a, b) => a.metrics.test.rmse - b.metrics.test.rmse);
+      const badgeLabels = ['Gold', 'Silver', 'Bronze'];
+      const badgeClasses = ['gold', 'silver', 'bronze'];
+      const maeBadges = Object.fromEntries(maeRank.map((item, index) => [item.name, { label: badgeLabels[index], cls: badgeClasses[index] }]));
+      const mseBadges = Object.fromEntries(mseRank.map((item, index) => [item.name, { label: badgeLabels[index], cls: badgeClasses[index] }]));
+      const rmseBadges = Object.fromEntries(rmseRank.map((item, index) => [item.name, { label: badgeLabels[index], cls: badgeClasses[index] }]));
+      const r2Badges = Object.fromEntries(r2Sorted.map((item, index) => [item.name, { label: badgeLabels[index], cls: badgeClasses[index] }]));
+      return `
+        <div class="grid2 overview-grid">
+          <div class="card">
+            <div class="head"><div class="title">Dataset Overview</div></div>
+            <table>
+              <thead><tr><th>Metric</th><th>Value</th></tr></thead>
+              <tbody>
+                <tr><td>Rows</td><td>${ds.rows}</td></tr>
+                <tr><td>Features</td><td>${ds.columns - 1}</td></tr>
+                <tr><td>Target Variable</td><td>indicador_kpi</td></tr>
+                <tr><td>Train/Test Split</td><td>80 / 20</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card">
+            <div class="head"><div class="title">Best by Task</div></div>
+            <table>
+              <thead><tr><th>Group</th><th>Model</th><th>Metric</th><th>Value</th></tr></thead>
+              <tbody>
+                <tr><td>Regression</td><td>${stats.models.random_forest.name}</td><td>Lowest RMSE</td><td>${fmt(stats.models.random_forest.metrics.selected.test.rmse)}</td></tr>
+                <tr><td>Classification</td><td>${stats.models.logistic_regression.name}</td><td>Highest Accuracy</td><td>${pct(stats.models.logistic_regression.metrics.selected.test_accuracy)}</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="grid2 overview-grid">
+          <div class="card">
+            <div class="head"><div class="title">RMSE Comparison</div></div>
+            <div class="bars">${regressors.map((item) => renderBar(item.name, item.metrics.test.rmse, maxRmse, item.cls, item.metrics.test.rmse === bestRmse ? 'Best' : '', 'ok')).join('')}</div>
+          </div>
+          <div class="card">
+            <div class="head"><div class="title">MAE Comparison</div></div>
+            <div class="bars">${regressors.map((item) => renderBar(item.name, item.metrics.test.mae, maxMae, item.cls, item.metrics.test.mae === bestMae ? 'Best' : '', 'ok')).join('')}</div>
+          </div>
+        </div>
+        <div class="grid2 overview-grid">
+          <div class="card">
+            <div class="head"><div class="title">MSE Comparison</div></div>
+            <div class="bars">${regressors.map((item) => renderBar(item.name, item.metrics.test.mse, maxMse, item.cls, item.metrics.test.mse === bestMse ? 'Best' : '', 'ok')).join('')}</div>
+          </div>
+          <div class="card">
+            <div class="head"><div class="title">R2 Comparison</div></div>
+            <div class="bars">${r2Sorted.map((item) => renderSignedBar(item.name, item.metrics.test.r2, -1, 1, item.cls, item.metrics.test.r2 === bestR2 ? 'Best' : '', 'ok')).join('')}</div>
+          </div>
+        </div>
+        <div class="grid1 overview-grid">
+          <div class="card">
+            <div class="head"><div class="title">Regression Model Summary</div></div>
+            <div class="model-summary">
+              ${regressors.map((item) => `
+                <div class="model-summary-block">
+                  <div class="head"><div class="title">${item.name}</div></div>
+                  <div class="bars">
+                    ${renderBar('MAE', item.metrics.test.mae, maxMae, item.cls, maeBadges[item.name].label, maeBadges[item.name].cls)}
+                    ${renderBar('MSE', item.metrics.test.mse, maxMse, item.cls, mseBadges[item.name].label, mseBadges[item.name].cls)}
+                    ${renderBar('RMSE', item.metrics.test.rmse, maxRmse, item.cls, rmseBadges[item.name].label, rmseBadges[item.name].cls)}
+                    ${renderSignedBar('R2', item.metrics.test.r2, -1, 1, item.cls, r2Badges[item.name].label, r2Badges[item.name].cls)}
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        </div>
+        `;
+    }
+
+    function renderRegressionModel(model, extraHtml = '') {
+      const selected = model.metrics.selected;
+      return `
+        <div class="grid1">
+          <div class="card plot-card">
+            <div class="head"><div class="title">Predicted vs Actual</div></div>
+            ${renderRegressionCanvas(model.key, `${model.name} test predictions`)}
+          </div>
+          <div class="card">
+            <div class="head"><div class="title">Selected Metrics</div></div>
+            <table>
+              <thead><tr><th>Metric</th><th>Meaning</th><th>Train</th><th>Test</th></tr></thead>
+              <tbody>
+                <tr><td>MAE</td><td>Average absolute error</td><td>${fmt(selected.train.mae)}</td><td>${fmt(selected.test.mae)}</td></tr>
+                <tr><td>MSE</td><td>Average squared error</td><td>${fmt(selected.train.mse)}</td><td>${fmt(selected.test.mse)}</td></tr>
+                <tr><td>RMSE</td><td>Root mean squared error</td><td>${fmt(selected.train.rmse)}</td><td>${fmt(selected.test.rmse)}</td></tr>
+                <tr><td>R2</td><td>Variance explained score</td><td>${fmt(selected.train.r2,4)}</td><td>${fmt(selected.test.r2,4)}</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>${extraHtml}`;
+    }
+
+    function renderDecisionTree(model) {
+      return renderRegressionModel(model);
+    }
+
+    function renderLogisticVariant(model, variant) {
+      return `
+        <div class="grid1">
+          <div class="card">
+            <div class="head"><div class="title">Confusion Matrix</div><div class="sub">Breakdown of predictions for ${formatCLabel(variant.c)}.</div></div>
+            ${renderConfusionMatrix(variant.test.confusion_matrix)}
+          </div>
+          <div class="card">
+            <div class="head"><div class="title">Selected Metrics</div></div>
+            <table>
+              <thead><tr><th>Metric</th><th>Meaning</th><th>Train</th><th>Test</th></tr></thead>
+              <tbody>
+                <tr><td>Accuracy</td><td>Overall correct predictions</td><td>${pct(variant.train_accuracy)}</td><td>${pct(variant.test_accuracy)}</td></tr>
+                <tr><td>Precision</td><td>Correct positive predictions</td><td>${fmt(variant.train.precision)}</td><td>${fmt(variant.test.precision)}</td></tr>
+                <tr><td>Recall</td><td>Ability to detect positives</td><td>${fmt(variant.train.recall)}</td><td>${fmt(variant.test.recall)}</td></tr>
+                <tr><td>F1-score</td><td>Balance between precision and recall</td><td>${fmt(variant.train.f1)}</td><td>${fmt(variant.test.f1)}</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>`;
+    }
+
+    function renderDashboard(stats) {
+      destroyCharts();
+      renderLogisticNav(stats.models.logistic_regression.metrics.variants);
+      document.getElementById('sec-overview').innerHTML = renderOverview(stats);
+      document.getElementById('sec-linear_regression').innerHTML = renderRegressionModel(stats.models.linear_regression);
+      document.getElementById('sec-random_forest').innerHTML = renderRegressionModel(stats.models.random_forest);
+      document.getElementById('sec-decision_tree').innerHTML = renderDecisionTree(stats.models.decision_tree);
+      stats.models.logistic_regression.metrics.variants.forEach((variant) => {
+        const key = sectionKeyForC(variant.c);
+        const section = document.getElementById(`sec-${key}`);
+        if (section) section.innerHTML = renderLogisticVariant(stats.models.logistic_regression, variant);
+      });
+      initRegressionChart(stats.models.linear_regression.key, stats.models.linear_regression.plots.test_actual_vs_predicted, `${stats.models.linear_regression.name} test predictions`);
+      initRegressionChart(stats.models.random_forest.key, stats.models.random_forest.plots.test_actual_vs_predicted, `${stats.models.random_forest.name} test predictions`);
+      initRegressionChart(stats.models.decision_tree.key, stats.models.decision_tree.plots.test_actual_vs_predicted, `${stats.models.decision_tree.name} test predictions`);
+    }
+
+    if (window.MODEL_STATS) {
+      renderDashboard(window.MODEL_STATS);
+      setLogisticNavOpen(false);
+    } else {
+      document.querySelectorAll('.section').forEach((section) => {
+        section.innerHTML = '<div class="empty">Bundle missing. Run <strong>python teste/main.py</strong> to generate the frontend data.</div>';
+      });
+    }
+  </script>
+</body>
+</html>
