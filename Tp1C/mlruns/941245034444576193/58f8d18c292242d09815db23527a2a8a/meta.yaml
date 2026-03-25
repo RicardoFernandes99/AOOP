@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/Ricardo/Documents/GitHub/AOOP/Tp1C/mlruns/941245034444576193/58f8d18c292242d09815db23527a2a8a/artifacts
+end_time: 1774388924893
+entry_point_name: ''
+experiment_id: '941245034444576193'
+lifecycle_stage: active
+run_id: 58f8d18c292242d09815db23527a2a8a
+run_name: logistic_regression_classifier
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1774388921612
+status: 3
+tags: []
+user_id: Ricardo

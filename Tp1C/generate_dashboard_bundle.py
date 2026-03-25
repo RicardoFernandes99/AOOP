@@ -3,9 +3,13 @@ from __future__ import annotations
 import json
 import pickle
 from datetime import datetime, timezone
+from math import exp, factorial
 from pathlib import Path
 
+import joblib
+import numpy as np
 import pandas as pd
+from pre_processing import DATE_COLUMN, prepare_base_dataframe, split_features_and_target
 
 try:
     from sklearn.metrics import (
@@ -29,11 +33,23 @@ except ModuleNotFoundError as exc:
 
 ROOT = Path(__file__).resolve().parent
 MLRUNS_DIR = ROOT / "mlruns"
-OUTPUT_PATH = ROOT / "artifacts" / "model_stats.js"
+ARTIFACTS_DIR = ROOT / "artifacts"
+MODEL_STATS_PATH = ARTIFACTS_DIR / "model_stats.js"
+EDA_BUNDLE_PATH = ARTIFACTS_DIR / "eda_bundle.js"
+EDA_SCATTER_BUNDLE_PATH = ARTIFACTS_DIR / "eda_scatter_bundle.js"
 DEFAULT_TARGET_COLUMN = "indicador_kpi"
 DEFAULT_THRESHOLD = 70.0
 DEFAULT_RANDOM_STATE = 42
 TEST_SIZE = 0.2
+PREDICTION_NUMERIC_BOUNDS: dict[str, tuple[float | None, float | None]] = {
+    "indicador_si": (0.0, 100.0),
+    "taxa_resolucao": (0.0, 100.0),
+    "tempo_resposta": (0.0, None),
+    "satisfacao_cidadao": (0.0, 5.0),
+    "volume_interacoes": (0.0, None),
+    "taxa_abandono": (0.0, 100.0),
+    "erros_tecnicos": (0.0, None),
+}
 
 
 def read_text(path: Path) -> str:
@@ -79,6 +95,10 @@ def load_pickled_model(path: Path):
         return pickle.load(file)
 
 
+def load_joblib_artifact(path: Path):
+    return joblib.load(path)
+
+
 def relative_path(path: Path | None) -> str | None:
     if path is None:
         return None
@@ -108,6 +128,173 @@ def load_table_preview(path: Path, limit: int | None = None) -> dict[str, object
         "rows": json.loads(preview.to_json(orient="records")),
         "total_rows": int(len(dataframe)),
     }
+
+
+def load_table_records(path: Path) -> list[dict[str, object]]:
+    if not path.exists():
+        return []
+    dataframe = pd.read_csv(path)
+    return json.loads(dataframe.to_json(orient="records"))
+
+
+def write_window_payload(path: Path, variable_name: str, payload: object) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(
+        f"window.{variable_name} = " + json.dumps(payload, ensure_ascii=False, indent=2) + ";\n",
+        encoding="utf-8",
+    )
+
+
+def normalize_dataset_path(raw_path: str) -> Path:
+    path = Path(raw_path)
+    if not path.is_absolute():
+        path = ROOT / path
+    return path.resolve()
+
+
+def load_source_dataset(parent_run_dir: Path, target_column: str) -> pd.DataFrame:
+    params_dir = parent_run_dir / "params"
+    dataset_path_param = params_dir / "dataset_path"
+    if dataset_path_param.exists():
+        dataset_path = normalize_dataset_path(read_text(dataset_path_param))
+        if dataset_path.exists():
+            return pd.read_csv(dataset_path)
+
+    processed_dataset_path = parent_run_dir / "artifacts" / "preprocessing" / "processed_dataset.csv"
+    if processed_dataset_path.exists():
+        return pd.read_csv(processed_dataset_path)
+
+    raise FileNotFoundError("No source dataset could be loaded from the latest MLflow parent run.")
+
+
+def get_numeric_columns(dataframe: pd.DataFrame) -> list[str]:
+    numeric_columns = dataframe.select_dtypes(include=np.number).columns.tolist()
+    if "id_registo" in numeric_columns:
+        numeric_columns.remove("id_registo")
+    return numeric_columns
+
+
+def poisson_probability(lambda_value: float, k: int) -> float:
+    if lambda_value < 0:
+        return 0.0
+    return exp(-lambda_value) * (lambda_value ** k) / factorial(k)
+
+
+def build_eda_payload(parent_run_dir: Path, source_df: pd.DataFrame, target_column: str) -> tuple[dict[str, object], list[dict[str, object]]]:
+    eda_dir = parent_run_dir / "artifacts" / "eda"
+    numeric_columns = get_numeric_columns(source_df)
+    if not numeric_columns:
+        raise ValueError("The source dataset has no numeric columns for the frontend EDA bundle.")
+
+    if target_column not in numeric_columns:
+        target_column = numeric_columns[-1]
+
+    numeric_df = source_df[numeric_columns].apply(pd.to_numeric, errors="coerce")
+    numeric_df = numeric_df.fillna(numeric_df.mean(numeric_only=True))
+    sample_preview = {
+        "columns": [str(column) for column in source_df.columns.tolist()],
+        "rows": json.loads(source_df.head(6).to_json(orient="records", date_format="iso")),
+        "total_rows": int(len(source_df)),
+    }
+
+    numeric_summary = load_table_records(eda_dir / "tables" / "numeric_summary.csv")
+    normality = load_table_records(eda_dir / "tables" / "shapiro_summary.csv")
+    for row in normality:
+        if "is_normal_at_0_05" in row:
+            row["is_normal"] = row.pop("is_normal_at_0_05")
+
+    missing = [
+        {"column": str(column), "count": int(count)}
+        for column, count in source_df.isna().sum().items()
+    ]
+
+    transparency: list[dict[str, object]] = []
+    if "transparencia" in source_df.columns:
+        transparency_counts = source_df["transparencia"].fillna("Missing").value_counts()
+        preferred_order = [
+            label
+            for label in ["Não", "Nao", "NÃ£o", "Sim", "Missing"]
+            if label in transparency_counts.index
+        ]
+        remaining_labels = [label for label in transparency_counts.index if label not in preferred_order]
+        transparency = [
+            {"label": str(label), "count": int(transparency_counts[label])}
+            for label in [*preferred_order, *sorted(remaining_labels)]
+        ]
+
+    poisson_payload = {"lambda": 0.0, "k": [0], "expected": [0.0], "observed": [0.0]}
+    if "erros_tecnicos" in numeric_df.columns:
+        error_series = numeric_df["erros_tecnicos"].dropna().round().astype(int)
+        if not error_series.empty:
+            lambda_value = float(error_series.mean())
+            max_k = int(error_series.max())
+            k_values = list(range(max_k + 1))
+            observed_counts = error_series.value_counts().sort_index()
+            poisson_payload = {
+                "lambda": lambda_value,
+                "k": k_values,
+                "expected": [float(poisson_probability(lambda_value, k)) for k in k_values],
+                "observed": [float(observed_counts.get(k, 0) / len(error_series)) for k in k_values],
+            }
+
+    target_counts, target_bins = np.histogram(numeric_df[target_column], bins=12)
+    histograms: dict[str, dict[str, list[float] | list[int]]] = {}
+    for column in numeric_columns:
+        counts, bins = np.histogram(numeric_df[column], bins=10)
+        histograms[column] = {
+            "bins": [float(value) for value in bins[1:]],
+            "counts": [int(value) for value in counts],
+        }
+
+    correlation_df = numeric_df[numeric_columns].corr().round(3)
+    correlation_pairs = (
+        correlation_df.where(np.triu(np.ones(correlation_df.shape), k=1).astype(bool))
+        .stack()
+        .reset_index()
+    )
+    correlation_pairs.columns = ["feature_1", "feature_2", "correlation"]
+    top_pairs = [
+        {
+            "feature_1": str(row["feature_1"]),
+            "feature_2": str(row["feature_2"]),
+            "correlation": float(row["correlation"]),
+        }
+        for _, row in correlation_pairs.reindex(
+            correlation_pairs["correlation"].abs().sort_values(ascending=False).index
+        ).head(8).iterrows()
+    ]
+
+    eda_payload = {
+        "target": target_column,
+        "numeric_columns": numeric_columns,
+        "kpis": {
+            "rows": int(len(source_df)),
+            "mean_kpi": float(numeric_df[target_column].mean()),
+            "mean_satisfacao": float(numeric_df["satisfacao_cidadao"].mean()) if "satisfacao_cidadao" in numeric_df.columns else None,
+            "mean_resolucao": float(numeric_df["taxa_resolucao"].mean()) if "taxa_resolucao" in numeric_df.columns else None,
+            "mean_tempo_resposta": float(numeric_df["tempo_resposta"].mean()) if "tempo_resposta" in numeric_df.columns else None,
+            "mean_taxa_abandono": float(numeric_df["taxa_abandono"].mean()) if "taxa_abandono" in numeric_df.columns else None,
+        },
+        "sample_preview": sample_preview,
+        "numeric_summary": numeric_summary,
+        "normality": normality,
+        "missing": missing,
+        "transparency": transparency,
+        "poisson": poisson_payload,
+        "target_distribution": {
+            "bins": [float(value) for value in target_bins[1:]],
+            "counts": [int(value) for value in target_counts],
+        },
+        "histograms": histograms,
+        "correlation": {
+            "labels": [str(column) for column in correlation_df.columns.tolist()],
+            "matrix": [[float(value) for value in row] for row in correlation_df.values.tolist()],
+            "top_pairs": top_pairs,
+        },
+    }
+
+    scatter_payload = json.loads(numeric_df[numeric_columns].to_json(orient="records"))
+    return eda_payload, scatter_payload
 
 
 def build_image_asset(path: Path, *, key: str, title: str, caption: str, group: str) -> dict[str, str] | None:
@@ -260,6 +447,263 @@ def build_tree_payload(model) -> dict[str, object] | None:
         "n_leaves": int(tree.n_leaves),
         "export_depth": int(tree.max_depth),
         "root": walk(0, 0),
+    }
+
+
+def build_tree_inference_payload(model) -> dict[str, object] | None:
+    if not hasattr(model, "tree_"):
+        return None
+
+    tree = model.tree_
+    return {
+        "children_left": [int(value) for value in tree.children_left.tolist()],
+        "children_right": [int(value) for value in tree.children_right.tolist()],
+        "feature": [int(value) for value in tree.feature.tolist()],
+        "threshold": [float(value) for value in tree.threshold.tolist()],
+        "value": [float(node[0][0]) for node in tree.value.tolist()],
+    }
+
+
+def select_options(series: pd.Series) -> tuple[list[str], str | None]:
+    cleaned = series.dropna().astype(str).str.strip()
+    cleaned = cleaned[cleaned != ""]
+    if cleaned.empty:
+        return [], None
+    counts = cleaned.value_counts()
+    options = counts.index.tolist()
+    return [str(value) for value in options], str(options[0])
+
+
+def build_prediction_fields(source_df: pd.DataFrame, target_column: str) -> list[dict[str, object]]:
+    fields: list[dict[str, object]] = []
+    for column in source_df.columns:
+        if column in {"id_registo", target_column}:
+            continue
+
+        series = source_df[column]
+        if column == DATE_COLUMN:
+            options, default = select_options(series)
+            fields.append(
+                {
+                    "name": str(column),
+                    "type": "date",
+                    "label": str(column),
+                    "default": default,
+                }
+            )
+            continue
+
+        if pd.api.types.is_numeric_dtype(series) or pd.api.types.is_bool_dtype(series):
+            numeric_series = pd.to_numeric(series, errors="coerce").dropna()
+            default = float(numeric_series.median()) if not numeric_series.empty else 0.0
+            is_integer = not numeric_series.empty and bool((numeric_series % 1 == 0).all())
+            step = 1 if is_integer else 0.01
+            if is_integer:
+                default_value: int | float = int(round(default))
+            else:
+                default_value = round(default, 2)
+            dataset_min = float(numeric_series.min()) if not numeric_series.empty else None
+            dataset_max = float(numeric_series.max()) if not numeric_series.empty else None
+            min_value, max_value = PREDICTION_NUMERIC_BOUNDS.get(str(column), (dataset_min, dataset_max))
+            fields.append(
+                {
+                    "name": str(column),
+                    "type": "number",
+                    "label": str(column),
+                    "default": default_value,
+                    "step": step,
+                    "min": min_value,
+                    "max": max_value,
+                }
+            )
+            continue
+
+        options, default = select_options(series)
+        fields.append(
+            {
+                "name": str(column),
+                "type": "select",
+                "label": str(column),
+                "options": options,
+                "default": default,
+            }
+        )
+    return fields
+
+
+def build_preprocessor_payload(parent_run_dir: Path, source_df: pd.DataFrame, target_column: str) -> dict[str, object]:
+    preprocessor_path = parent_run_dir / "artifacts" / "preprocessing" / "preprocessor.joblib"
+    if not preprocessor_path.exists():
+        raise FileNotFoundError("Preprocessor artifact was not found in the latest MLflow parent run.")
+
+    preprocessor = load_joblib_artifact(preprocessor_path)
+    prepared_df = prepare_base_dataframe(source_df)
+    feature_df, _ = split_features_and_target(prepared_df, target_column)
+
+    numeric_columns = list(preprocessor.transformers_[0][2])
+    categorical_columns = list(preprocessor.transformers_[1][2])
+
+    numeric_pipeline = preprocessor.named_transformers_["num"]
+    categorical_pipeline = preprocessor.named_transformers_["cat"]
+
+    numeric_imputer = numeric_pipeline.named_steps["imputer"]
+    scaler = numeric_pipeline.named_steps["scaler"]
+    categorical_imputer = categorical_pipeline.named_steps["imputer"]
+    encoder = categorical_pipeline.named_steps["encoder"]
+
+    feature_names = [str(name) for name in preprocessor.get_feature_names_out().tolist()]
+    feature_indexes = {name: index for index, name in enumerate(feature_names)}
+
+    numeric_payload: list[dict[str, object]] = []
+    for column, fill_value, scale, min_value in zip(
+        numeric_columns,
+        numeric_imputer.statistics_.tolist(),
+        scaler.scale_.tolist(),
+        scaler.min_.tolist(),
+    ):
+        input_name = str(column)
+        source = "numeric"
+        part = None
+        if column.startswith("registo_") and DATE_COLUMN in source_df.columns:
+            input_name = DATE_COLUMN
+            source = "date"
+            part = column.replace("registo_", "")
+        output_name = f"num__{column}"
+        numeric_payload.append(
+            {
+                "raw_name": str(column),
+                "input_name": input_name,
+                "source": source,
+                "part": part,
+                "index": int(feature_indexes[output_name]),
+                "fill_value": float(fill_value),
+                "scale": float(scale),
+                "min": float(min_value),
+            }
+        )
+
+    categorical_payload: list[dict[str, object]] = []
+    for column, fill_value, categories in zip(
+        categorical_columns,
+        categorical_imputer.statistics_.tolist(),
+        encoder.categories_,
+    ):
+        options = []
+        for category in categories.tolist():
+            output_name = f"cat__{column}_{category}"
+            options.append(
+                {
+                    "value": str(category),
+                    "index": int(feature_indexes[output_name]),
+                }
+            )
+        categorical_payload.append(
+            {
+                "raw_name": str(column),
+                "input_name": str(column),
+                "fill_value": str(fill_value),
+                "options": options,
+            }
+        )
+
+    return {
+        "raw_fields": build_prediction_fields(source_df, target_column),
+        "feature_count": int(len(feature_names)),
+        "feature_names": feature_names,
+        "numeric": numeric_payload,
+        "categorical": categorical_payload,
+        "date_field": DATE_COLUMN if DATE_COLUMN in source_df.columns else None,
+    }
+
+
+def build_prediction_model_payload(
+    model_key: str,
+    model_name: str,
+    model,
+    *,
+    threshold: float,
+) -> dict[str, object]:
+    if model_key == "linear_regression":
+        return {
+            "key": model_key,
+            "name": model_name,
+            "task": "regression",
+            "kind": "linear_regression",
+            "intercept": float(model.intercept_),
+            "coefficients": [float(value) for value in model.coef_.tolist()],
+        }
+
+    if model_key == "decision_tree":
+        return {
+            "key": model_key,
+            "name": model_name,
+            "task": "regression",
+            "kind": "decision_tree",
+            "tree": build_tree_inference_payload(model),
+        }
+
+    if model_key == "random_forest":
+        return {
+            "key": model_key,
+            "name": model_name,
+            "task": "regression",
+            "kind": "random_forest",
+            "trees": [build_tree_inference_payload(estimator) for estimator in model.estimators_],
+        }
+
+    if model_key == "logistic_regression":
+        return {
+            "key": model_key,
+            "name": model_name,
+            "task": "classification",
+            "kind": "logistic_regression",
+            "intercept": [float(value) for value in model.intercept_.tolist()],
+            "coefficients": [[float(weight) for weight in row] for row in model.coef_.tolist()],
+            "classes": [int(value) for value in model.classes_.tolist()],
+            "threshold": 0.5,
+            "labels": {
+                "0": f"< {threshold:g}",
+                "1": f">= {threshold:g}",
+            },
+        }
+
+    raise ValueError(f"Unsupported prediction model key: {model_key}")
+
+
+def build_prediction_payload(
+    parent_run_dir: Path,
+    source_df: pd.DataFrame,
+    target_column: str,
+    threshold: float,
+    *,
+    regression_models: dict[str, tuple[str, Path, Path]],
+    logistic_model: tuple[Path, Path],
+) -> dict[str, object]:
+    transform_payload = build_preprocessor_payload(parent_run_dir, source_df, target_column)
+    models_payload: dict[str, dict[str, object]] = {}
+
+    for model_key, (model_name, _run_dir, model_path) in regression_models.items():
+        models_payload[model_key] = build_prediction_model_payload(
+            model_key,
+            model_name,
+            load_pickled_model(model_path),
+            threshold=threshold,
+        )
+
+    logistic_run_dir, logistic_model_path = logistic_model
+    models_payload["logistic_regression"] = build_prediction_model_payload(
+        "logistic_regression",
+        "Logistic Regression",
+        load_pickled_model(logistic_model_path),
+        threshold=threshold,
+    )
+    models_payload["logistic_regression"]["selected_run_id"] = logistic_run_dir.name
+
+    return {
+        "target_column": target_column,
+        "classification_threshold": float(threshold),
+        "transform": transform_payload,
+        "models": models_payload,
     }
 
 
@@ -471,17 +915,21 @@ def main() -> None:
         "models": {},
     }
 
+    regression_prediction_models: dict[str, tuple[str, Path, Path]] = {}
+
     for model_key, (model_name, run_dir) in model_runs.items():
         assert run_dir is not None
+        model_path = find_model_pickle(experiment_dir, run_dir)
         stats["models"][model_key] = build_regression_model(
             model_key=model_key,
             model_name=model_name,
             run_dir=run_dir,
-            model_path=find_model_pickle(experiment_dir, run_dir),
+            model_path=model_path,
             X=X,
             y=y_regression,
             random_state=random_state,
         )
+        regression_prediction_models[model_key] = (model_name, run_dir, model_path)
 
     stats["models"]["logistic_regression"] = build_logistic_model(
         run_items=logistic_run_items,
@@ -491,12 +939,27 @@ def main() -> None:
         random_state=random_state,
     )
 
-    OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    OUTPUT_PATH.write_text(
-        "window.MODEL_STATS = " + json.dumps(stats, ensure_ascii=False, indent=2) + ";\n",
-        encoding="utf-8",
+    source_df = load_source_dataset(parent_run_dir, target_column)
+    eda_payload, scatter_payload = build_eda_payload(parent_run_dir, source_df, target_column)
+    selected_logistic_run_id = str(stats["models"]["logistic_regression"]["metrics"]["selected"]["run"]["id"])
+    selected_logistic_model = next(
+        (run_dir, model_path)
+        for run_dir, model_path in logistic_run_items
+        if run_dir.name == selected_logistic_run_id
     )
-    print(f"Dashboard bundle written to {OUTPUT_PATH}")
+    stats["predictions"] = build_prediction_payload(
+        parent_run_dir,
+        source_df,
+        target_column,
+        threshold,
+        regression_models=regression_prediction_models,
+        logistic_model=selected_logistic_model,
+    )
+
+    write_window_payload(MODEL_STATS_PATH, "MODEL_STATS", stats)
+    write_window_payload(EDA_BUNDLE_PATH, "EDA_DATA", eda_payload)
+    write_window_payload(EDA_SCATTER_BUNDLE_PATH, "EDA_SCATTER_DATA", scatter_payload)
+    print(f"Dashboard bundles written to {ARTIFACTS_DIR}")
 
 
 if __name__ == "__main__":

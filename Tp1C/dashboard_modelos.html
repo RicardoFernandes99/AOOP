@@ -2,100 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
+  <meta http-equiv="refresh" content="0; url=frontend/dashboard.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Model Observatory Dashboard</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap"
-    rel="stylesheet"
-  />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400"
-    rel="stylesheet"
-  />
-  <link rel="stylesheet" href="dashboard_modelos.css" />
+  <script>
+    window.location.replace("frontend/dashboard.html");
+  </script>
 </head>
 <body>
-  <div class="app">
-    <div class="frame">
-      <div class="shell">
-        <aside class="sidebar">
-          <div class="brand">
-            <div class="logo">DI</div>
-            <div>
-              <h1>Deep Intelligence</h1>
-              <p>Observatory v1.0</p>
-            </div>
-          </div>
-
-          <section class="mini" id="sidebar-summary">
-            <div class="eyebrow">Dataset Snapshot</div>
-            <div class="headline">Waiting for bundle</div>
-            <p>Run <code>python generate_dashboard_bundle.py</code> to load the latest MLflow outputs.</p>
-          </section>
-
-          <nav class="panel">
-            <div class="navtitle">Navigation</div>
-            <button class="navbtn active" data-label="Overview" onclick="showSection('overview', this)">
-              <span class="material-symbols-outlined">dashboard</span>
-              <span>Overview</span>
-            </button>
-            <button class="navbtn" data-label="Linear Regression" onclick="showSection('linear_regression', this)">
-              <span class="material-symbols-outlined">show_chart</span>
-              <span>Linear Regression</span>
-            </button>
-            <button class="navbtn" data-label="Random Forest" onclick="showSection('random_forest', this)">
-              <span class="material-symbols-outlined">forest</span>
-              <span>Random Forest</span>
-            </button>
-            <button class="navbtn" data-label="Decision Tree" onclick="showSection('decision_tree', this)">
-              <span class="material-symbols-outlined">account_tree</span>
-              <span>Decision Tree</span>
-            </button>
-            <button class="navbtn navtoggle" id="logistic-toggle" data-label="Logistic Regression" onclick="openLogisticSection(this)">
-              <span class="material-symbols-outlined">tune</span>
-              <span>Logistic Regression</span>
-              <span class="caret material-symbols-outlined">chevron_right</span>
-            </button>
-            <div class="subnav" id="logistic-nav"></div>
-          </nav>
-
-        </aside>
-
-        <main class="main">
-          <header class="topbar">
-            <div class="copy">
-              <div class="eyebrow">Mocks + MLflow</div>
-              <h2 id="page-title">Overview</h2>
-              <p id="page-subtitle">
-                Mock-inspired observatory view combining the latest MLflow pipeline metrics across the trained models.
-              </p>
-            </div>
-            <div class="tools">
-              <label class="search">
-                <span class="material-symbols-outlined">search</span>
-                <input type="text" placeholder="Search models or metrics..." />
-              </label>
-              <div class="chip ok">
-                <span class="dot"></span>
-                <span>Latest Bundle</span>
-              </div>
-            </div>
-          </header>
-
-          <section id="sec-overview" class="section active"></section>
-          <section id="sec-linear_regression" class="section"></section>
-          <section id="sec-random_forest" class="section"></section>
-          <section id="sec-decision_tree" class="section"></section>
-          <div id="logistic-sections"></div>
-        </main>
-      </div>
-    </div>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
-  <script src="artifacts/model_stats.js"></script>
-  <script src="dashboard_modelos.js"></script>
+  <p>Redirecting to <a href="frontend/dashboard.html">frontend/dashboard.html</a>...</p>
 </body>
 </html>

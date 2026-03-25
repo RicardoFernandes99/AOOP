@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Correlations | Data Explorer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400" rel="stylesheet" />
+  <link rel="stylesheet" href="../dashboard_modelos.css" />
+</head>
+<body class="data-explorer" data-page="data_correlations">
+  <div class="app">
+    <div class="frame">
+      <div class="shell">
+        <aside class="sidebar">
+          <div class="brand">
+            <div><h1>Dashboard</h1></div>
+          </div>
+          <nav class="panel">
+            <div class="navtitle">Navigation</div>
+            <button class="navbtn navtoggle" id="stats-toggle" type="button" data-group-toggle="stats" aria-controls="stats-nav" aria-expanded="true">
+              <span class="material-symbols-outlined">query_stats</span><span>Data Explorer</span><span class="caret material-symbols-outlined">chevron_right</span>
+            </button>
+            <div class="subnav" id="stats-nav">
+              <a class="navbtn navlink" data-page-link="dashboard" href="./dashboard.html"><span class="material-symbols-outlined">dashboard</span><span>Overview</span></a>
+              <a class="navbtn navlink" data-page-link="data_distributions" href="./data_distributions.html"><span class="material-symbols-outlined">bar_chart</span><span>Distributions</span></a>
+              <a class="navbtn navlink" data-page-link="data_correlations" href="./data_correlations.html"><span class="material-symbols-outlined">hub</span><span>Correlations</span></a>
+              <a class="navbtn navlink" data-page-link="data_scatter" href="./data_scatter.html"><span class="material-symbols-outlined">scatter_plot</span><span>Scatterplot</span></a>
+            </div>
+            <button class="navbtn navtoggle" id="models-toggle" type="button" data-group-toggle="models" aria-controls="models-nav" aria-expanded="false">
+              <span class="material-symbols-outlined">deployed_code</span><span>Models</span><span class="caret material-symbols-outlined">chevron_right</span>
+            </button>
+        <div class="subnav" id="models-nav">
+          <a class="navbtn navlink" data-page-link="overview" href="./overview.html"><span class="material-symbols-outlined">dashboard</span><span>Overview</span></a>
+          <a class="navbtn navlink" data-page-link="linear_regression" href="./linear_regression.html"><span class="material-symbols-outlined">show_chart</span><span>Linear Regression</span></a>
+          <a class="navbtn navlink" data-page-link="random_forest" href="./random_forest.html"><span class="material-symbols-outlined">forest</span><span>Random Forest</span></a>
+          <a class="navbtn navlink" data-page-link="decision_tree" href="./decision_tree.html"><span class="material-symbols-outlined">account_tree</span><span>Decision Tree</span></a>
+          <a class="navbtn navlink" data-page-link="logistic_regression" href="./logistic_regression.html"><span class="material-symbols-outlined">tune</span><span>Logistic Regression</span></a>
+        </div>
+        <a class="navbtn" data-page-link="predictions" href="./predictions.html"><span class="material-symbols-outlined">model_training</span><span>Predictions</span></a>
+      </nav>
+        </aside>
+        <main class="main">
+          <header class="topbar">
+            <div class="copy"><h2 id="page-title">Correlations</h2><p id="page-subtitle"></p></div>
+          </header>
+          <section id="page-root" class="section active"></section>
+        </main>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <script src="../artifacts/eda_bundle.js"></script>
+  <script src="../artifacts/eda_scatter_bundle.js"></script>
+  <script src="../artifacts/model_stats.js"></script>
+  <script src="../dashboard_modelos.js"></script>
+</body>
+</html>
