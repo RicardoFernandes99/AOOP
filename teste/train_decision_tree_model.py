@@ -54,9 +54,9 @@ def train_decision_tree_model() -> dict:
     grid_search = GridSearchCV(
         estimator=DecisionTreeRegressor(random_state=42),
         param_grid={
-            "max_depth": [3, 5, 7, 10],
-            "min_samples_split": [2, 5, 10],
-            "min_samples_leaf": [1, 2, 4],
+            "max_depth": [1, 2, 3, 4, 5, 7, 10],
+            "min_samples_split": [2, 4, 5, 6, 10],
+            "min_samples_leaf": [1, 2, 3, 4, 10],
         },
         cv=5,
     )
@@ -69,7 +69,7 @@ def train_decision_tree_model() -> dict:
         "key": "decision_tree",
         "name": "Decision Tree",
         "task": "regression",
-        "source": "teste/90-accuracy-using-decision-tree-regressor.ipynb",
+        "source": "teste/decision_tree.ipynb",
         "artifact": "teste/artifacts/models/decision_tree.joblib",
         "split": shared_split_payload(len(train_df), len(test_df)),
         "metrics": {

@@ -7,6 +7,7 @@ from model_common import ARTIFACTS_DIR, DATASET_PATH, to_serializable
 from train_decision_tree_model import train_decision_tree_model
 from train_linear_model import train_linear_model
 from train_logistic_model import train_logistic_model
+from train_neural_network_model import train_neural_network_model
 from train_random_forest_model import train_random_forest_model
 
 
@@ -33,7 +34,18 @@ def build_bundle() -> dict:
     linear = train_linear_model()
     forest = train_random_forest_model()
     tree = train_decision_tree_model()
+    neural_network = train_neural_network_model()
     logistic = train_logistic_model()
+    regressors = {
+        "linear_regression": linear,
+        "random_forest": forest,
+        "decision_tree": tree,
+        "neural_network": neural_network,
+    }
+    best_regressor_key, best_regressor_payload = min(
+        regressors.items(),
+        key=lambda item: item[1]["metrics"]["selected"]["test"]["rmse"],
+    )
 
     bundle = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
@@ -42,11 +54,12 @@ def build_bundle() -> dict:
             "linear_regression": linear,
             "random_forest": forest,
             "decision_tree": tree,
+            "neural_network": neural_network,
             "logistic_regression": logistic,
         },
         "overview": {
-            "best_regressor": "random_forest",
-            "best_regressor_rmse": forest["metrics"]["selected"]["test"]["rmse"],
+            "best_regressor": best_regressor_key,
+            "best_regressor_rmse": best_regressor_payload["metrics"]["selected"]["test"]["rmse"],
             "best_classifier": "logistic_regression",
             "best_classifier_accuracy": logistic["metrics"]["selected"]["test_accuracy"],
         },

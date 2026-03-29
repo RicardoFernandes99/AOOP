@@ -48,7 +48,7 @@ def train_linear_model() -> dict:
         "key": "linear_regression",
         "name": "Linear Regression",
         "task": "regression",
-        "source": "teste/multiple-linear-regression-with-onehotencoding.ipynb",
+        "source": "teste/linear_regression.ipynb",
         "artifact": "teste/artifacts/models/linear_regression.joblib",
         "split": shared_split_payload(len(train_df), len(test_df)),
         "metrics": {

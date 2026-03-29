@@ -75,6 +75,7 @@
     .model-summary-block{padding:4px 0}
     .plot-wrap{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;height:420px}
     .plot-wrap canvas{width:100% !important;height:100% !important;display:block}
+    .plot-wrap img{width:100%;height:100%;object-fit:contain;display:block}
     .matrix-grid{display:grid;grid-template-columns:120px repeat(2,minmax(0,1fr));gap:10px}
     .matrix-label,.matrix-cell{border:1px solid var(--line);border-radius:14px;padding:18px}
     .matrix-label{background:#f8fbff;color:var(--muted);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;text-align:center}
@@ -104,6 +105,7 @@
         <button class="navbtn" onclick="showSection('linear_regression',this)">Linear Regression</button>
         <button class="navbtn" onclick="showSection('random_forest',this)">Random Forest</button>
         <button class="navbtn" onclick="showSection('decision_tree',this)">Decision Tree</button>
+        <button class="navbtn" onclick="showSection('neural_network',this)">Artificial Neural Network</button>
         <div class="navgroup">
           <button id="logistic-toggle" class="navbtn navtoggle" onclick="toggleLogisticNav(this)">Logistic Regression</button>
           <div id="logistic-nav" class="subnav-wrap"></div>
@@ -114,6 +116,7 @@
         <section id="sec-linear_regression" class="section"></section>
         <section id="sec-random_forest" class="section"></section>
         <section id="sec-decision_tree" class="section"></section>
+        <section id="sec-neural_network" class="section"></section>
         <section id="sec-logistic_c_1" class="section"></section>
         <section id="sec-logistic_c_100" class="section"></section>
         <section id="sec-logistic_c_001" class="section"></section>
@@ -274,9 +277,11 @@
       const linear = stats.models.linear_regression.metrics.selected;
       const forest = stats.models.random_forest.metrics.selected;
       const tree = stats.models.decision_tree.metrics.selected;
+      const neural = stats.models.neural_network.metrics.selected;
       const regressors = [
         { name: 'Random Forest', metrics: forest, cls: 'ok' },
         { name: 'Decision Tree', metrics: tree, cls: '' },
+        { name: 'Artificial Neural Network', metrics: neural, cls: '' },
         { name: 'Linear Regression', metrics: linear, cls: 'warn' }
       ];
       const maxRmse = Math.max(...regressors.map((item) => item.metrics.test.rmse));
@@ -290,12 +295,14 @@
       const maeRank = [...regressors].sort((a, b) => a.metrics.test.mae - b.metrics.test.mae);
       const mseRank = [...regressors].sort((a, b) => a.metrics.test.mse - b.metrics.test.mse);
       const rmseRank = [...regressors].sort((a, b) => a.metrics.test.rmse - b.metrics.test.rmse);
-      const badgeLabels = ['Gold', 'Silver', 'Bronze'];
-      const badgeClasses = ['gold', 'silver', 'bronze'];
+      const badgeLabels = ['Gold', 'Silver', 'Bronze', 'Tracked'];
+      const badgeClasses = ['gold', 'silver', 'bronze', 'ok'];
       const maeBadges = Object.fromEntries(maeRank.map((item, index) => [item.name, { label: badgeLabels[index], cls: badgeClasses[index] }]));
       const mseBadges = Object.fromEntries(mseRank.map((item, index) => [item.name, { label: badgeLabels[index], cls: badgeClasses[index] }]));
       const rmseBadges = Object.fromEntries(rmseRank.map((item, index) => [item.name, { label: badgeLabels[index], cls: badgeClasses[index] }]));
       const r2Badges = Object.fromEntries(r2Sorted.map((item, index) => [item.name, { label: badgeLabels[index], cls: badgeClasses[index] }]));
+      const bestRegressorKey = stats.overview.best_regressor;
+      const bestRegressor = stats.models[bestRegressorKey];
       return `
         <div class="grid2 overview-grid">
           <div class="card">
@@ -315,7 +322,7 @@
             <table>
               <thead><tr><th>Group</th><th>Model</th><th>Metric</th><th>Value</th></tr></thead>
               <tbody>
-                <tr><td>Regression</td><td>${stats.models.random_forest.name}</td><td>Lowest RMSE</td><td>${fmt(stats.models.random_forest.metrics.selected.test.rmse)}</td></tr>
+                <tr><td>Regression</td><td>${bestRegressor.name}</td><td>Lowest RMSE</td><td>${fmt(stats.overview.best_regressor_rmse)}</td></tr>
                 <tr><td>Classification</td><td>${stats.models.logistic_regression.name}</td><td>Highest Accuracy</td><td>${pct(stats.models.logistic_regression.metrics.selected.test_accuracy)}</td></tr>
               </tbody>
             </table>
@@ -349,13 +356,28 @@
                 <div class="model-summary-block">
                   <div class="head"><div class="title">${item.name}</div></div>
                   <div class="bars">
-                    ${renderBar('MAE', item.metrics.test.mae, maxMae, item.cls, maeBadges[item.name].label, maeBadges[item.name].cls)}
-                    ${renderBar('MSE', item.metrics.test.mse, maxMse, item.cls, mseBadges[item.name].label, mseBadges[item.name].cls)}
-                    ${renderBar('RMSE', item.metrics.test.rmse, maxRmse, item.cls, rmseBadges[item.name].label, rmseBadges[item.name].cls)}
-                    ${renderSignedBar('R2', item.metrics.test.r2, -1, 1, item.cls, r2Badges[item.name].label, r2Badges[item.name].cls)}
+                    ${renderBar('MAE', item.metrics.test.mae, maxMae, item.cls)}
+                    ${renderBar('MSE', item.metrics.test.mse, maxMse, item.cls)}
+                    ${renderBar('RMSE', item.metrics.test.rmse, maxRmse, item.cls)}
+                    ${renderSignedBar('R2', item.metrics.test.r2, -1, 1, item.cls)}
                   </div>
                 </div>
               `).join('')}
+            </div>
+          </div>
+          <div class="card">
+            <div class="head"><div class="title">Classification Model Summary</div></div>
+            <div class="model-summary">
+              <div class="model-summary-block">
+                <div class="head"><div class="title">${stats.models.logistic_regression.name}</div><div class="sub">Selected variant: ${formatCLabel(stats.models.logistic_regression.metrics.selected.c)}</div></div>
+                <div class="bars">
+                  ${renderBar('Accuracy', stats.models.logistic_regression.metrics.selected.test_accuracy, 1, 'ok')}
+                  ${renderBar('Precision', stats.models.logistic_regression.metrics.selected.test.precision, 1, 'ok')}
+                  ${renderBar('Recall', stats.models.logistic_regression.metrics.selected.test.recall, 1, 'ok')}
+                  ${renderBar('F1-score', stats.models.logistic_regression.metrics.selected.test.f1, 1, 'ok')}
+                  ${renderBar('ROC-AUC', stats.models.logistic_regression.metrics.selected.test.roc_auc, 1, 'ok')}
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -390,12 +412,18 @@
     }
 
     function renderLogisticVariant(model, variant) {
+      const rocCurve = variant.artifacts && variant.artifacts.roc_curve;
       return `
         <div class="grid1">
           <div class="card">
             <div class="head"><div class="title">Confusion Matrix</div><div class="sub">Breakdown of predictions for ${formatCLabel(variant.c)}.</div></div>
             ${renderConfusionMatrix(variant.test.confusion_matrix)}
           </div>
+          ${rocCurve ? `
+          <div class="card plot-card">
+            <div class="head"><div class="title">ROC Curve</div><div class="sub">Receiver operating characteristic curve for ${formatCLabel(variant.c)}.</div></div>
+            <div class="plot-wrap"><img src="${escapeHtml(rocCurve.path)}" alt="ROC curve for ${formatCLabel(variant.c)}"></div>
+          </div>` : ''}
           <div class="card">
             <div class="head"><div class="title">Selected Metrics</div></div>
             <table>
@@ -405,6 +433,7 @@
                 <tr><td>Precision</td><td>Correct positive predictions</td><td>${fmt(variant.train.precision)}</td><td>${fmt(variant.test.precision)}</td></tr>
                 <tr><td>Recall</td><td>Ability to detect positives</td><td>${fmt(variant.train.recall)}</td><td>${fmt(variant.test.recall)}</td></tr>
                 <tr><td>F1-score</td><td>Balance between precision and recall</td><td>${fmt(variant.train.f1)}</td><td>${fmt(variant.test.f1)}</td></tr>
+                <tr><td>ROC-AUC</td><td>Area under the ROC curve</td><td>${fmt(variant.train.roc_auc,4)}</td><td>${fmt(variant.test.roc_auc,4)}</td></tr>
               </tbody>
             </table>
           </div>
@@ -418,6 +447,7 @@
       document.getElementById('sec-linear_regression').innerHTML = renderRegressionModel(stats.models.linear_regression);
       document.getElementById('sec-random_forest').innerHTML = renderRegressionModel(stats.models.random_forest);
       document.getElementById('sec-decision_tree').innerHTML = renderDecisionTree(stats.models.decision_tree);
+      document.getElementById('sec-neural_network').innerHTML = renderRegressionModel(stats.models.neural_network);
       stats.models.logistic_regression.metrics.variants.forEach((variant) => {
         const key = sectionKeyForC(variant.c);
         const section = document.getElementById(`sec-${key}`);
@@ -426,6 +456,7 @@
       initRegressionChart(stats.models.linear_regression.key, stats.models.linear_regression.plots.test_actual_vs_predicted, `${stats.models.linear_regression.name} test predictions`);
       initRegressionChart(stats.models.random_forest.key, stats.models.random_forest.plots.test_actual_vs_predicted, `${stats.models.random_forest.name} test predictions`);
       initRegressionChart(stats.models.decision_tree.key, stats.models.decision_tree.plots.test_actual_vs_predicted, `${stats.models.decision_tree.name} test predictions`);
+      initRegressionChart(stats.models.neural_network.key, stats.models.neural_network.plots.test_actual_vs_predicted, `${stats.models.neural_network.name} test predictions`);
     }
 
     if (window.MODEL_STATS) {

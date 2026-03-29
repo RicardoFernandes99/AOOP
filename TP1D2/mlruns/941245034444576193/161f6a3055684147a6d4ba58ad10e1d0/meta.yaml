@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/Ricardo/Documents/GitHub/AOOP/Tp1C/mlruns/941245034444576193/161f6a3055684147a6d4ba58ad10e1d0/artifacts
+end_time: 1774731747020
+entry_point_name: ''
+experiment_id: '941245034444576193'
+lifecycle_stage: active
+run_id: 161f6a3055684147a6d4ba58ad10e1d0
+run_name: random_forest_regressor
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1774731741795
+status: 3
+tags: []
+user_id: Ricardo

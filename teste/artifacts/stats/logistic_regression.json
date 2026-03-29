@@ -2,480 +2,504 @@
   "key": "logistic_regression",
   "name": "Logistic Regression",
   "task": "classification",
-  "source": "teste/logistic-regression-classifier-tutorial.ipynb",
+  "source": "teste/logistic_regression.ipynb",
   "artifact": "teste/artifacts/models/logistic_regression.joblib",
   "split": {
     "test_size": 0.2,
     "random_state": 42,
-    "train_rows": 160,
-    "test_rows": 40,
+    "train_rows": 1600,
+    "test_rows": 400,
     "shared_indices": true
   },
   "threshold": 70,
   "metrics": {
     "selected": {
-      "c": 0.01,
-      "train_accuracy": 0.6,
-      "test_accuracy": 0.725,
+      "c": 100.0,
+      "train_accuracy": 0.9563,
+      "test_accuracy": 0.945,
       "train": {
-        "accuracy": 0.6,
-        "precision": 0.6,
-        "recall": 1.0,
-        "f1": 0.75,
-        "roc_auc": 0.7441,
+        "accuracy": 0.9563,
+        "precision": 0.9638,
+        "recall": 0.9756,
+        "f1": 0.9697,
+        "roc_auc": 0.9841,
         "confusion_matrix": [
           [
-            0,
-            64
+            411,
+            42
           ],
           [
-            0,
-            96
+            28,
+            1119
           ]
         ],
         "report": {
           "0": {
-            "precision": 0.0,
-            "recall": 0.0,
-            "f1-score": 0.0,
-            "support": 64.0
+            "precision": 0.9362,
+            "recall": 0.9073,
+            "f1-score": 0.9215,
+            "support": 453.0
           },
           "1": {
-            "precision": 0.6,
-            "recall": 1.0,
-            "f1-score": 0.75,
-            "support": 96.0
+            "precision": 0.9638,
+            "recall": 0.9756,
+            "f1-score": 0.9697,
+            "support": 1147.0
           },
-          "accuracy": 0.6,
+          "accuracy": 0.9563,
           "macro avg": {
-            "precision": 0.3,
-            "recall": 0.5,
-            "f1-score": 0.375,
-            "support": 160.0
+            "precision": 0.95,
+            "recall": 0.9414,
+            "f1-score": 0.9456,
+            "support": 1600.0
           },
           "weighted avg": {
-            "precision": 0.36,
-            "recall": 0.6,
-            "f1-score": 0.45,
-            "support": 160.0
+            "precision": 0.956,
+            "recall": 0.9563,
+            "f1-score": 0.956,
+            "support": 1600.0
           }
         }
       },
       "test": {
-        "accuracy": 0.725,
-        "precision": 0.725,
-        "recall": 1.0,
-        "f1": 0.8406,
-        "roc_auc": 0.5893,
+        "accuracy": 0.945,
+        "precision": 0.9792,
+        "recall": 0.9463,
+        "f1": 0.9625,
+        "roc_auc": 0.9602,
         "confusion_matrix": [
           [
-            0,
-            11
+            96,
+            6
           ],
           [
-            0,
-            29
+            16,
+            282
           ]
         ],
         "report": {
           "0": {
-            "precision": 0.0,
-            "recall": 0.0,
-            "f1-score": 0.0,
-            "support": 11.0
+            "precision": 0.8571,
+            "recall": 0.9412,
+            "f1-score": 0.8972,
+            "support": 102.0
           },
           "1": {
-            "precision": 0.725,
-            "recall": 1.0,
-            "f1-score": 0.8406,
-            "support": 29.0
+            "precision": 0.9792,
+            "recall": 0.9463,
+            "f1-score": 0.9625,
+            "support": 298.0
           },
-          "accuracy": 0.725,
+          "accuracy": 0.945,
           "macro avg": {
-            "precision": 0.3625,
-            "recall": 0.5,
-            "f1-score": 0.4203,
-            "support": 40.0
+            "precision": 0.9182,
+            "recall": 0.9437,
+            "f1-score": 0.9298,
+            "support": 400.0
           },
           "weighted avg": {
-            "precision": 0.5256,
-            "recall": 0.725,
-            "f1-score": 0.6094,
-            "support": 40.0
+            "precision": 0.9481,
+            "recall": 0.945,
+            "f1-score": 0.9458,
+            "support": 400.0
           }
         }
       }
     },
     "baseline": {
       "c": 1.0,
-      "train_accuracy": 0.7625,
-      "test_accuracy": 0.625,
+      "train_accuracy": 0.9525,
+      "test_accuracy": 0.94,
       "train": {
-        "accuracy": 0.7625,
-        "precision": 0.7636,
-        "recall": 0.875,
-        "f1": 0.8155,
-        "roc_auc": 0.8254,
+        "accuracy": 0.9525,
+        "precision": 0.9597,
+        "recall": 0.9747,
+        "f1": 0.9671,
+        "roc_auc": 0.9839,
         "confusion_matrix": [
           [
-            38,
-            26
+            406,
+            47
           ],
           [
-            12,
-            84
+            29,
+            1118
           ]
         ],
         "report": {
           "0": {
-            "precision": 0.76,
-            "recall": 0.5938,
-            "f1-score": 0.6667,
-            "support": 64.0
+            "precision": 0.9333,
+            "recall": 0.8962,
+            "f1-score": 0.9144,
+            "support": 453.0
           },
           "1": {
-            "precision": 0.7636,
-            "recall": 0.875,
-            "f1-score": 0.8155,
-            "support": 96.0
+            "precision": 0.9597,
+            "recall": 0.9747,
+            "f1-score": 0.9671,
+            "support": 1147.0
           },
-          "accuracy": 0.7625,
+          "accuracy": 0.9525,
           "macro avg": {
-            "precision": 0.7618,
-            "recall": 0.7344,
-            "f1-score": 0.7411,
-            "support": 160.0
+            "precision": 0.9465,
+            "recall": 0.9355,
+            "f1-score": 0.9408,
+            "support": 1600.0
           },
           "weighted avg": {
-            "precision": 0.7622,
-            "recall": 0.7625,
-            "f1-score": 0.756,
-            "support": 160.0
+            "precision": 0.9522,
+            "recall": 0.9525,
+            "f1-score": 0.9522,
+            "support": 1600.0
           }
         }
       },
       "test": {
-        "accuracy": 0.625,
-        "precision": 0.7333,
-        "recall": 0.7586,
-        "f1": 0.7458,
-        "roc_auc": 0.605,
+        "accuracy": 0.94,
+        "precision": 0.9757,
+        "recall": 0.943,
+        "f1": 0.959,
+        "roc_auc": 0.9614,
         "confusion_matrix": [
           [
-            3,
-            8
+            95,
+            7
           ],
           [
-            7,
-            22
+            17,
+            281
           ]
         ],
         "report": {
           "0": {
-            "precision": 0.3,
-            "recall": 0.2727,
-            "f1-score": 0.2857,
-            "support": 11.0
+            "precision": 0.8482,
+            "recall": 0.9314,
+            "f1-score": 0.8879,
+            "support": 102.0
           },
           "1": {
-            "precision": 0.7333,
-            "recall": 0.7586,
-            "f1-score": 0.7458,
-            "support": 29.0
+            "precision": 0.9757,
+            "recall": 0.943,
+            "f1-score": 0.959,
+            "support": 298.0
           },
-          "accuracy": 0.625,
+          "accuracy": 0.94,
           "macro avg": {
-            "precision": 0.5167,
-            "recall": 0.5157,
-            "f1-score": 0.5157,
-            "support": 40.0
+            "precision": 0.912,
+            "recall": 0.9372,
+            "f1-score": 0.9234,
+            "support": 400.0
           },
           "weighted avg": {
-            "precision": 0.6142,
-            "recall": 0.625,
-            "f1-score": 0.6192,
-            "support": 40.0
+            "precision": 0.9432,
+            "recall": 0.94,
+            "f1-score": 0.9409,
+            "support": 400.0
           }
+        }
+      },
+      "artifacts": {
+        "roc_curve": {
+          "path": "teste/artifacts/plots/logistic_regression_c_1_0_roc_curve.png",
+          "auc": 0.9614
         }
       }
     },
     "variants": [
       {
         "c": 1.0,
-        "train_accuracy": 0.7625,
-        "test_accuracy": 0.625,
+        "train_accuracy": 0.9525,
+        "test_accuracy": 0.94,
         "train": {
-          "accuracy": 0.7625,
-          "precision": 0.7636,
-          "recall": 0.875,
-          "f1": 0.8155,
-          "roc_auc": 0.8254,
+          "accuracy": 0.9525,
+          "precision": 0.9597,
+          "recall": 0.9747,
+          "f1": 0.9671,
+          "roc_auc": 0.9839,
           "confusion_matrix": [
             [
-              38,
-              26
+              406,
+              47
             ],
             [
-              12,
-              84
+              29,
+              1118
             ]
           ],
           "report": {
             "0": {
-              "precision": 0.76,
-              "recall": 0.5938,
-              "f1-score": 0.6667,
-              "support": 64.0
+              "precision": 0.9333,
+              "recall": 0.8962,
+              "f1-score": 0.9144,
+              "support": 453.0
             },
             "1": {
-              "precision": 0.7636,
-              "recall": 0.875,
-              "f1-score": 0.8155,
-              "support": 96.0
+              "precision": 0.9597,
+              "recall": 0.9747,
+              "f1-score": 0.9671,
+              "support": 1147.0
             },
-            "accuracy": 0.7625,
+            "accuracy": 0.9525,
             "macro avg": {
-              "precision": 0.7618,
-              "recall": 0.7344,
-              "f1-score": 0.7411,
-              "support": 160.0
+              "precision": 0.9465,
+              "recall": 0.9355,
+              "f1-score": 0.9408,
+              "support": 1600.0
             },
             "weighted avg": {
-              "precision": 0.7622,
-              "recall": 0.7625,
-              "f1-score": 0.756,
-              "support": 160.0
+              "precision": 0.9522,
+              "recall": 0.9525,
+              "f1-score": 0.9522,
+              "support": 1600.0
             }
           }
         },
         "test": {
-          "accuracy": 0.625,
-          "precision": 0.7333,
-          "recall": 0.7586,
-          "f1": 0.7458,
-          "roc_auc": 0.605,
+          "accuracy": 0.94,
+          "precision": 0.9757,
+          "recall": 0.943,
+          "f1": 0.959,
+          "roc_auc": 0.9614,
           "confusion_matrix": [
             [
-              3,
-              8
+              95,
+              7
             ],
             [
-              7,
-              22
+              17,
+              281
             ]
           ],
           "report": {
             "0": {
-              "precision": 0.3,
-              "recall": 0.2727,
-              "f1-score": 0.2857,
-              "support": 11.0
+              "precision": 0.8482,
+              "recall": 0.9314,
+              "f1-score": 0.8879,
+              "support": 102.0
             },
             "1": {
-              "precision": 0.7333,
-              "recall": 0.7586,
-              "f1-score": 0.7458,
-              "support": 29.0
+              "precision": 0.9757,
+              "recall": 0.943,
+              "f1-score": 0.959,
+              "support": 298.0
             },
-            "accuracy": 0.625,
+            "accuracy": 0.94,
             "macro avg": {
-              "precision": 0.5167,
-              "recall": 0.5157,
-              "f1-score": 0.5157,
-              "support": 40.0
+              "precision": 0.912,
+              "recall": 0.9372,
+              "f1-score": 0.9234,
+              "support": 400.0
             },
             "weighted avg": {
-              "precision": 0.6142,
-              "recall": 0.625,
-              "f1-score": 0.6192,
-              "support": 40.0
+              "precision": 0.9432,
+              "recall": 0.94,
+              "f1-score": 0.9409,
+              "support": 400.0
             }
+          }
+        },
+        "artifacts": {
+          "roc_curve": {
+            "path": "teste/artifacts/plots/logistic_regression_c_1_0_roc_curve.png",
+            "auc": 0.9614
           }
         }
       },
       {
         "c": 100.0,
-        "train_accuracy": 0.725,
-        "test_accuracy": 0.625,
+        "train_accuracy": 0.9563,
+        "test_accuracy": 0.945,
         "train": {
-          "accuracy": 0.725,
-          "precision": 0.7453,
-          "recall": 0.8229,
-          "f1": 0.7822,
-          "roc_auc": 0.8397,
+          "accuracy": 0.9563,
+          "precision": 0.9638,
+          "recall": 0.9756,
+          "f1": 0.9697,
+          "roc_auc": 0.9841,
           "confusion_matrix": [
             [
-              37,
-              27
+              411,
+              42
             ],
             [
-              17,
-              79
+              28,
+              1119
             ]
           ],
           "report": {
             "0": {
-              "precision": 0.6852,
-              "recall": 0.5781,
-              "f1-score": 0.6271,
-              "support": 64.0
+              "precision": 0.9362,
+              "recall": 0.9073,
+              "f1-score": 0.9215,
+              "support": 453.0
             },
             "1": {
-              "precision": 0.7453,
-              "recall": 0.8229,
-              "f1-score": 0.7822,
-              "support": 96.0
+              "precision": 0.9638,
+              "recall": 0.9756,
+              "f1-score": 0.9697,
+              "support": 1147.0
             },
-            "accuracy": 0.725,
+            "accuracy": 0.9563,
             "macro avg": {
-              "precision": 0.7152,
-              "recall": 0.7005,
-              "f1-score": 0.7046,
-              "support": 160.0
+              "precision": 0.95,
+              "recall": 0.9414,
+              "f1-score": 0.9456,
+              "support": 1600.0
             },
             "weighted avg": {
-              "precision": 0.7212,
-              "recall": 0.725,
-              "f1-score": 0.7202,
-              "support": 160.0
+              "precision": 0.956,
+              "recall": 0.9563,
+              "f1-score": 0.956,
+              "support": 1600.0
             }
           }
         },
         "test": {
-          "accuracy": 0.625,
-          "precision": 0.75,
-          "recall": 0.7241,
-          "f1": 0.7368,
-          "roc_auc": 0.5987,
+          "accuracy": 0.945,
+          "precision": 0.9792,
+          "recall": 0.9463,
+          "f1": 0.9625,
+          "roc_auc": 0.9602,
           "confusion_matrix": [
             [
-              4,
-              7
+              96,
+              6
             ],
             [
-              8,
-              21
+              16,
+              282
             ]
           ],
           "report": {
             "0": {
-              "precision": 0.3333,
-              "recall": 0.3636,
-              "f1-score": 0.3478,
-              "support": 11.0
+              "precision": 0.8571,
+              "recall": 0.9412,
+              "f1-score": 0.8972,
+              "support": 102.0
             },
             "1": {
-              "precision": 0.75,
-              "recall": 0.7241,
-              "f1-score": 0.7368,
-              "support": 29.0
+              "precision": 0.9792,
+              "recall": 0.9463,
+              "f1-score": 0.9625,
+              "support": 298.0
             },
-            "accuracy": 0.625,
+            "accuracy": 0.945,
             "macro avg": {
-              "precision": 0.5417,
-              "recall": 0.5439,
-              "f1-score": 0.5423,
-              "support": 40.0
+              "precision": 0.9182,
+              "recall": 0.9437,
+              "f1-score": 0.9298,
+              "support": 400.0
             },
             "weighted avg": {
-              "precision": 0.6354,
-              "recall": 0.625,
-              "f1-score": 0.6299,
-              "support": 40.0
+              "precision": 0.9481,
+              "recall": 0.945,
+              "f1-score": 0.9458,
+              "support": 400.0
             }
+          }
+        },
+        "artifacts": {
+          "roc_curve": {
+            "path": "teste/artifacts/plots/logistic_regression_c_100_0_roc_curve.png",
+            "auc": 0.9602
           }
         }
       },
       {
         "c": 0.01,
-        "train_accuracy": 0.6,
-        "test_accuracy": 0.725,
+        "train_accuracy": 0.8669,
+        "test_accuracy": 0.9,
         "train": {
-          "accuracy": 0.6,
-          "precision": 0.6,
-          "recall": 1.0,
-          "f1": 0.75,
-          "roc_auc": 0.7441,
+          "accuracy": 0.8669,
+          "precision": 0.8501,
+          "recall": 0.9887,
+          "f1": 0.9141,
+          "roc_auc": 0.9753,
           "confusion_matrix": [
             [
-              0,
-              64
+              253,
+              200
             ],
             [
-              0,
-              96
+              13,
+              1134
             ]
           ],
           "report": {
             "0": {
-              "precision": 0.0,
-              "recall": 0.0,
-              "f1-score": 0.0,
-              "support": 64.0
+              "precision": 0.9511,
+              "recall": 0.5585,
+              "f1-score": 0.7038,
+              "support": 453.0
             },
             "1": {
-              "precision": 0.6,
-              "recall": 1.0,
-              "f1-score": 0.75,
-              "support": 96.0
+              "precision": 0.8501,
+              "recall": 0.9887,
+              "f1-score": 0.9141,
+              "support": 1147.0
             },
-            "accuracy": 0.6,
+            "accuracy": 0.8669,
             "macro avg": {
-              "precision": 0.3,
-              "recall": 0.5,
-              "f1-score": 0.375,
-              "support": 160.0
+              "precision": 0.9006,
+              "recall": 0.7736,
+              "f1-score": 0.809,
+              "support": 1600.0
             },
             "weighted avg": {
-              "precision": 0.36,
-              "recall": 0.6,
-              "f1-score": 0.45,
-              "support": 160.0
+              "precision": 0.8787,
+              "recall": 0.8669,
+              "f1-score": 0.8546,
+              "support": 1600.0
             }
           }
         },
         "test": {
-          "accuracy": 0.725,
-          "precision": 0.725,
-          "recall": 1.0,
-          "f1": 0.8406,
-          "roc_auc": 0.5893,
+          "accuracy": 0.9,
+          "precision": 0.8933,
+          "recall": 0.9832,
+          "f1": 0.9361,
+          "roc_auc": 0.9689,
           "confusion_matrix": [
             [
-              0,
-              11
+              67,
+              35
             ],
             [
-              0,
-              29
+              5,
+              293
             ]
           ],
           "report": {
             "0": {
-              "precision": 0.0,
-              "recall": 0.0,
-              "f1-score": 0.0,
-              "support": 11.0
+              "precision": 0.9306,
+              "recall": 0.6569,
+              "f1-score": 0.7701,
+              "support": 102.0
             },
             "1": {
-              "precision": 0.725,
-              "recall": 1.0,
-              "f1-score": 0.8406,
-              "support": 29.0
+              "precision": 0.8933,
+              "recall": 0.9832,
+              "f1-score": 0.9361,
+              "support": 298.0
             },
-            "accuracy": 0.725,
+            "accuracy": 0.9,
             "macro avg": {
-              "precision": 0.3625,
-              "recall": 0.5,
-              "f1-score": 0.4203,
-              "support": 40.0
+              "precision": 0.9119,
+              "recall": 0.82,
+              "f1-score": 0.8531,
+              "support": 400.0
             },
             "weighted avg": {
-              "precision": 0.5256,
-              "recall": 0.725,
-              "f1-score": 0.6094,
-              "support": 40.0
+              "precision": 0.9028,
+              "recall": 0.9,
+              "f1-score": 0.8938,
+              "support": 400.0
             }
+          }
+        },
+        "artifacts": {
+          "roc_curve": {
+            "path": "teste/artifacts/plots/logistic_regression_c_0_01_roc_curve.png",
+            "auc": 0.9689
           }
         }
       }
@@ -486,167 +510,1611 @@
       "points": [
         {
           "actual": 1,
-          "predicted_probability": 0.5452
+          "predicted_probability": 0.998
         },
         {
           "actual": 1,
-          "predicted_probability": 0.574
+          "predicted_probability": 0.3772
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9817
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 1.0
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.8949
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.6481
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9998
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9124
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.1266
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9997
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9857
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9997
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9999
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 1.0
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9806
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 1.0
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9856
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.8751
         },
         {
           "actual": 0,
-          "predicted_probability": 0.5598
-        },
-        {
-          "actual": 1,
-          "predicted_probability": 0.5931
-        },
-        {
-          "actual": 1,
-          "predicted_probability": 0.5848
+          "predicted_probability": 0.0209
         },
         {
           "actual": 0,
-          "predicted_probability": 0.5615
+          "predicted_probability": 0.0069
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9944
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9994
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9964
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.8859
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.999
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.4052
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9863
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9998
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9803
         },
         {
           "actual": 0,
-          "predicted_probability": 0.5197
+          "predicted_probability": 0.9997
         },
         {
           "actual": 1,
-          "predicted_probability": 0.5874
+          "predicted_probability": 0.9976
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9977
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9992
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9492
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9926
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9957
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 1.0
         },
         {
           "actual": 0,
-          "predicted_probability": 0.5461
-        },
-        {
-          "actual": 1,
-          "predicted_probability": 0.5751
-        },
-        {
-          "actual": 1,
-          "predicted_probability": 0.5365
-        },
-        {
-          "actual": 1,
-          "predicted_probability": 0.5842
-        },
-        {
-          "actual": 1,
-          "predicted_probability": 0.6019
+          "predicted_probability": 0.0167
         },
         {
           "actual": 0,
-          "predicted_probability": 0.5374
+          "predicted_probability": 0.0004
         },
         {
           "actual": 1,
-          "predicted_probability": 0.5899
+          "predicted_probability": 0.9945
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.0948
         },
         {
           "actual": 0,
-          "predicted_probability": 0.5803
+          "predicted_probability": 0.0415
         },
         {
           "actual": 1,
-          "predicted_probability": 0.5664
+          "predicted_probability": 0.9995
         },
         {
           "actual": 1,
-          "predicted_probability": 0.561
-        },
-        {
-          "actual": 1,
-          "predicted_probability": 0.5658
-        },
-        {
-          "actual": 1,
-          "predicted_probability": 0.5343
-        },
-        {
-          "actual": 1,
-          "predicted_probability": 0.5769
-        },
-        {
-          "actual": 1,
-          "predicted_probability": 0.5777
+          "predicted_probability": 1.0
         },
         {
           "actual": 0,
-          "predicted_probability": 0.6078
+          "predicted_probability": 0.0071
         },
         {
           "actual": 1,
-          "predicted_probability": 0.5195
+          "predicted_probability": 0.9999
         },
         {
           "actual": 1,
-          "predicted_probability": 0.5695
+          "predicted_probability": 0.9972
         },
         {
           "actual": 0,
-          "predicted_probability": 0.5538
+          "predicted_probability": 0.0492
         },
         {
           "actual": 1,
-          "predicted_probability": 0.5392
+          "predicted_probability": 0.0033
         },
         {
           "actual": 1,
-          "predicted_probability": 0.5417
+          "predicted_probability": 0.9995
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9801
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.8182
         },
         {
           "actual": 0,
-          "predicted_probability": 0.5775
+          "predicted_probability": 0.285
         },
         {
           "actual": 1,
-          "predicted_probability": 0.5933
+          "predicted_probability": 0.9896
         },
         {
           "actual": 1,
-          "predicted_probability": 0.5842
+          "predicted_probability": 0.9697
         },
         {
           "actual": 1,
-          "predicted_probability": 0.5371
+          "predicted_probability": 0.9975
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9946
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9946
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9868
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9939
         },
         {
           "actual": 0,
-          "predicted_probability": 0.5681
+          "predicted_probability": 0.0303
         },
         {
           "actual": 1,
-          "predicted_probability": 0.5537
-        },
-        {
-          "actual": 1,
-          "predicted_probability": 0.5713
-        },
-        {
-          "actual": 1,
-          "predicted_probability": 0.5702
-        },
-        {
-          "actual": 1,
-          "predicted_probability": 0.5191
+          "predicted_probability": 0.9938
         },
         {
           "actual": 0,
-          "predicted_probability": 0.5324
+          "predicted_probability": 0.0056
         },
         {
           "actual": 1,
-          "predicted_probability": 0.5809
+          "predicted_probability": 0.9949
         },
         {
           "actual": 1,
-          "predicted_probability": 0.5349
+          "predicted_probability": 0.8795
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9338
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9947
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9998
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.1354
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9974
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9708
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.94
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9988
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9895
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.6421
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0011
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.8726
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9876
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0001
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 1.0
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0773
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9305
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9992
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0203
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9962
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9989
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9991
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.1209
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.6861
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0119
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 1.0
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.7804
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9834
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9839
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9942
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.7877
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9983
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9987
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9982
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0001
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9903
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.1031
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9931
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.998
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 1.0
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0744
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9999
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9996
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9617
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 1.0
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9597
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0572
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0289
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9823
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9366
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9979
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9459
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.999
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9998
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9696
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 1.0
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.998
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9875
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0037
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9923
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.992
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 1.0
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9901
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9912
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9747
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9251
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9971
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 1.0
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.029
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9994
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9994
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0009
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9922
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9988
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9984
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9327
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9994
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0058
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9999
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0223
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9972
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9447
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.024
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9981
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 1.0
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9495
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 1.0
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9903
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9999
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0248
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.5399
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9841
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0103
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9982
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9981
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0461
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9818
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.0087
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 1.0
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.8582
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 1.0
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9995
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9976
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0299
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9966
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9999
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9931
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.992
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9972
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9983
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0067
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0241
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.7249
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9992
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0143
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0006
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9458
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9983
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9998
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.001
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0063
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0731
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.001
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.3117
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9804
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9976
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9998
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.986
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9942
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.0591
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0077
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9804
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 1.0
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9908
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9972
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9989
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9882
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9869
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0011
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9998
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0162
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9988
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.1068
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9798
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.1071
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.999
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9974
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9309
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.9913
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9966
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 1.0
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9985
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9958
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9957
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 1.0
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9999
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9989
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9992
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9998
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9969
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9947
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.8799
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.0817
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0001
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9953
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9994
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 1.0
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.2383
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.994
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 1.0
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9993
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9648
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9795
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9948
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9981
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9873
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.905
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9977
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9938
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 1.0
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.98
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 1.0
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.6088
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9998
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0179
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9954
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.7001
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9959
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9945
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.4655
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 1.0
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9998
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9855
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0098
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.4767
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.3112
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0815
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9897
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.6474
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9675
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9966
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9993
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.0119
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9998
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0287
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0032
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0001
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9976
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9989
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.221
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0005
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 1.0
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0359
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9998
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9983
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0282
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.988
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0683
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.003
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0001
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.7267
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9934
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 1.0
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9981
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0905
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9996
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0618
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9973
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0002
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9968
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0389
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.017
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.02
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9818
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.8542
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9665
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.998
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9884
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 1.0
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9921
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.1904
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.721
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0003
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0003
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.7974
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9856
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.3151
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9912
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 1.0
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9898
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0067
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9998
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.996
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9978
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9983
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.2165
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9984
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0379
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9409
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.989
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 1.0
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0082
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0191
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0337
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9975
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0047
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9777
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9936
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0247
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9971
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0177
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9717
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.3128
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0084
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9997
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9331
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 1.0
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.1868
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9978
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9913
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.995
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9916
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9385
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.998
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9922
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.0004
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9999
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9999
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0037
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0327
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9937
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9992
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9985
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9991
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9999
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.8794
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9964
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9997
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.3074
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9884
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0303
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0192
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9985
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9962
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9967
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.1181
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9996
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.3379
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9977
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0008
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9975
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9963
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9969
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0004
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.1086
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.2917
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9777
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9957
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0016
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 1.0
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9934
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 1.0
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0854
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9109
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9979
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9175
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0487
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9723
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.999
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0075
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9855
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9912
+        },
+        {
+          "actual": 0,
+          "predicted_probability": 0.0637
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 0.9988
+        },
+        {
+          "actual": 1,
+          "predicted_probability": 1.0
         }
       ],
       "min": 0.0,
       "max": 1.0
+    },
+    "selected_roc_curve": {
+      "path": "teste/artifacts/plots/logistic_regression_c_100_0_roc_curve.png",
+      "auc": 0.9602
     }
   }
 }

@@ -9,6 +9,7 @@ ROOT_DIR = Path(__file__).resolve().parents[1]
 DATASET_PATH = ROOT_DIR / "Dataset-iGov.csv"
 ARTIFACTS_DIR = ROOT_DIR / "teste" / "artifacts"
 MODELS_DIR = ARTIFACTS_DIR / "models"
+PLOTS_DIR = ARTIFACTS_DIR / "plots"
 STATS_DIR = ARTIFACTS_DIR / "stats"
 
 CATEGORICAL_COLUMNS = [
@@ -27,12 +28,13 @@ SPLIT_RANDOM_STATE = 42
 
 def ensure_dirs() -> None:
     MODELS_DIR.mkdir(parents=True, exist_ok=True)
+    PLOTS_DIR.mkdir(parents=True, exist_ok=True)
     STATS_DIR.mkdir(parents=True, exist_ok=True)
 
 
 def require_ml_dependencies() -> None:
     missing: list[str] = []
-    for module_name in ("pandas", "sklearn", "joblib"):
+    for module_name in ("pandas", "sklearn", "joblib", "matplotlib"):
         try:
             __import__(module_name)
         except ImportError:

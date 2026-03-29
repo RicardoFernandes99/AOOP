@@ -56,7 +56,7 @@ def train_random_forest_model() -> dict:
         "key": "random_forest",
         "name": "Random Forest",
         "task": "regression",
-        "source": "teste/randomforestregressor-with-pipeline.ipynb",
+        "source": "teste/random_forest.ipynb",
         "artifact": "teste/artifacts/models/random_forest.joblib",
         "split": shared_split_payload(len(train_df), len(test_df)),
         "metrics": {
