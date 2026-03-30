@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/Ricardo/Documents/GitHub/AOOP/TP1D2/mlruns/941987017049040408/579a5f82d47a4afbba7f14ff0e5096fe/artifacts
+end_time: 1774885147575
+entry_point_name: ''
+experiment_id: '941987017049040408'
+lifecycle_stage: active
+run_id: 579a5f82d47a4afbba7f14ff0e5096fe
+run_name: neural_network_regressor
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1774885144378
+status: 3
+tags: []
+user_id: Ricardo

@@ -27,7 +27,7 @@ const clusterColor=(index,alpha=.72)=>`rgba(${CLUSTER_PALETTE[Math.abs(Number(in
 const previewTerminal=(node)=>!!node&&(node.is_leaf||node.label==="leaf"||(!node.left&&!node.right));
 const pctInt=(v)=>`${Math.round(Number(v)*100)}%`;
 const regressionToneClass=(key)=>key==="random_forest"?"ok":key==="decision_tree"?"warn":key==="neural_network"?"blue":"";
-const regressionDescription=(key)=>key==="linear_regression"?"Baseline regression model with direct fit diagnostics":key==="random_forest"?"Ensemble regression performance panel":key==="decision_tree"?"Tree-driven regression behavior panel":key==="neural_network"?"Multi-layer perceptron regression with nonlinear feature interactions":"Regression model diagnostics";
+const regressionDescription=()=>"";
 const regressionEntries=(stats)=>[["random_forest","Random Forest"],["decision_tree","Decision Tree"],["neural_network","Artificial Neural Network"],["linear_regression","Linear Regression"]].map(([key,name])=>{
   const model=stats&&stats.models?stats.models[key]:null;
   if(!model||!model.metrics||!model.metrics.selected)return null;
@@ -724,8 +724,8 @@ function renderOverview(stats){
   </div>
   <div class="grid2">
     <div class="card"><div class="body"><div class="head"><div><div class="eyebrow">Models At A Glance</div><div class="title">Current lineup</div><p class="sub">Mock-inspired cards adapted to the metrics available in the generated bundle.</p></div>${pill("Live Feed","ok")}</div><div class="models">
-      ${regs.map(i=>`<div class="model"><div class="model-top"><div><h4>${i.name}</h4><p>${regressionDescription(i.key)}</p></div>${pill(i.m.test.r2===byR2[0].m.test.r2?"Top R2":i.m.test.rmse===byRmse[0].m.test.rmse?"Lowest RMSE":"Tracked",i.m.test.rmse===byRmse[0].m.test.rmse?"ok":"")}</div><div class="mini-grid"><div class="mini-row"><span>Test RMSE</span><strong>${fmt(i.m.test.rmse)}</strong></div><div class="mini-row"><span>Test MAE</span><strong>${fmt(i.m.test.mae)}</strong></div><div class="mini-row"><span>Test R2</span><strong>${fmt(i.m.test.r2,4)}</strong></div></div></div>`).join("")}
-      <div class="model"><div class="model-top"><div><h4>Logistic Regression</h4><p>Classifier diagnostics from the selected bundle output.</p></div>${pill("Classifier","ok")}</div><div class="mini-grid"><div class="mini-row"><span>Model</span><strong>Logistic Regression</strong></div><div class="mini-row"><span>Test Accuracy</span><strong>${pct(lg.test_accuracy)}</strong></div><div class="mini-row"><span>Test F1</span><strong>${fmt(lg.test.f1)}</strong></div></div></div>
+      ${regs.map(i=>`<div class="model"><div class="model-top"><div><h4>${i.name}</h4></div>${pill(i.m.test.r2===byR2[0].m.test.r2?"Top R2":i.m.test.rmse===byRmse[0].m.test.rmse?"Lowest RMSE":"Tracked",i.m.test.rmse===byRmse[0].m.test.rmse?"ok":"")}</div><div class="mini-grid"><div class="mini-row"><span>Test RMSE</span><strong>${fmt(i.m.test.rmse)}</strong></div><div class="mini-row"><span>Test MAE</span><strong>${fmt(i.m.test.mae)}</strong></div><div class="mini-row"><span>Test R2</span><strong>${fmt(i.m.test.r2,4)}</strong></div></div></div>`).join("")}
+      <div class="model"><div class="model-top"><div><h4>Logistic Regression</h4></div>${pill("Classifier","ok")}</div><div class="mini-grid"><div class="mini-row"><span>Model</span><strong>Logistic Regression</strong></div><div class="mini-row"><span>Test Accuracy</span><strong>${pct(lg.test_accuracy)}</strong></div><div class="mini-row"><span>Test F1</span><strong>${fmt(lg.test.f1)}</strong></div></div></div>
     </div></div></div>
     <div class="card"><div class="body"><div class="head"><div><div class="eyebrow">Comparison Board</div><div class="title">Regression ranking signals</div><p class="sub">The highest-signal metrics from the current bundle, laid out in a denser observatory comparison panel.</p></div>${pill("Best by RMSE: "+byRmse[0].name,"ok")}</div><div class="grid2" style="margin-bottom:0">
       <div class="stack">${regs.map(i=>band(`${i.name} · RMSE`,i.m.test.rmse,maxRmse,{cls:i.cls,badge:rank(byRmse,i.name)[0],badgeClass:rank(byRmse,i.name)[1]})).join("")}</div>
@@ -746,7 +746,6 @@ function renderRegression(model){
   const max=Math.max(tr.rmse,te.rmse,tr.mae,te.mae,tr.mse,te.mse);
   const health=quality(te.r2,{excellent:.8,good:.45,ok:.1});
   const cls=regressionToneClass(model.key);
-  const desc=regressionDescription(model.key);
   const network=model.network;
   const networkRows=network?`<tr><th>Hidden Layers</th><td>${esc((network.hidden_layer_sizes||[]).join(" - ")||"None")}</td></tr><tr><th>Activation</th><td>${esc(network.activation||"identity")}</td></tr><tr><th>Loss</th><td>${fmt(network.loss||0,4)}</td></tr>`:"";
   return `${intro(model.name,"Performance","",pill(health,te.r2>=.1?"ok":"warn"))}

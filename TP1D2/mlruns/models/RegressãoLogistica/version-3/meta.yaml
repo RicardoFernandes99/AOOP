@@ -1,0 +1,16 @@
+creation_timestamp: 1774886096713
+current_stage: None
+deployment_job_state: null
+description: ''
+last_updated_timestamp: 1774886096713
+model_id: m-a4dcee2bac8d43fa8bd85b19faa20725
+name: RegressãoLogistica
+run_id: 5a4fb63539cf44f989ef05f6bfe3bf3b
+run_link: ''
+source: models:/m-a4dcee2bac8d43fa8bd85b19faa20725
+status: READY
+status_message: null
+storage_location: file:///C:/Users/Ricardo/Documents/GitHub/AOOP/TP1D2/mlruns/941987017049040408/models/m-a4dcee2bac8d43fa8bd85b19faa20725/artifacts
+user_id: null
+version: 3
+workspace: default

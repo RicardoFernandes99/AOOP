@@ -1,0 +1,10 @@
+artifact_location: file:///C:/Users/Ricardo/Documents/GitHub/AOOP/TP1D2/mlruns/941987017049040408/models/m-1573b0e3f2a047cca1954500a264cca0/artifacts
+creation_timestamp: 1774885136519
+experiment_id: '941987017049040408'
+last_updated_timestamp: 1774885139291
+model_id: m-1573b0e3f2a047cca1954500a264cca0
+model_type: null
+name: model
+source_run_id: 9d4cd267734f416b85ddbb3b1b67232c
+status: 2
+status_message: null
